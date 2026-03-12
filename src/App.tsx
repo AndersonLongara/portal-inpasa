@@ -81,6 +81,7 @@ const App: React.FC = () => {
         <ArchitectureSection />
         <StrategySection />
         <ProtocolSection />
+        <Footer />
       </main>
     </div>
   );
@@ -674,6 +675,37 @@ const CorporateLoader: React.FC = () => (
       </div>
     </motion.div>
   </div>
+);
+
+const Footer: React.FC = () => (
+  <footer className="w-full bg-white border-t border-slate-200 py-12 px-8 flex flex-col items-center justify-center gap-6 snap-start">
+    <div className="flex flex-col items-center gap-4 group">
+      <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Desenvolvido por</span>
+      <a 
+        href="https://altrahub.com.br" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="transition-transform hover:scale-105 active:scale-95 duration-300"
+      >
+        <img 
+          src="/altrahub-logo.svg" 
+          alt="AltraHub" 
+          className="h-8 md:h-10 w-auto opacity-80 group-hover:opacity-100 transition-opacity"
+        />
+      </a>
+    </div>
+    <div className="flex flex-col items-center gap-1">
+      <p className="text-slate-500 text-[11px] font-bold">© 2026 AltraHub Software House</p>
+      <a 
+        href="https://altrahub.com.br" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="text-emerald-600 text-[10px] font-black uppercase tracking-widest hover:underline decoration-2 underline-offset-4"
+      >
+        www.altrahub.com.br
+      </a>
+    </div>
+  </footer>
 );
 
 export default App;
