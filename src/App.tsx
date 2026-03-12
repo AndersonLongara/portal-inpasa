@@ -207,13 +207,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onExplore }) => (
       >
         <SectionTag text="Transformação Digital // Março 2026" />
         
+        <div className="mb-4">
+          <span className="inline-block bg-slate-900 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-2">Preparado para Inpasa</span>
+          <p className="text-sm font-black text-slate-500 uppercase tracking-widest">A/C Klayton Lauer & Gustavo Mariano</p>
+        </div>
+        
         <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-6 text-tight">
           PORTAL INTELIGENTE DE <br />
           <span className="text-emerald-600">ATENDIMENTO AO CLIENTE</span>
         </h1>
         
         <p className="text-xl text-slate-600 font-normal leading-relaxed mb-10 border-l-4 border-emerald-600 pl-6">
-          Autonomia total para seus clientes. Um ecossistema digital que centraliza pedidos, faturas e suporte, guiado por um <strong>Assistente Virtual Integrado</strong> para zerar o atrito operacional da Inpasa.
+          Projeto executivo para a Transformação B2B/B2C da Inpasa. Um ecossistema digital que centraliza autoatendimento, guiado por um <strong>Assistente Virtual Integrado</strong> ao Salesforce e ERP corporativo.
         </p>
 
         <motion.button 
@@ -257,7 +262,7 @@ const DiagnosticSection: React.FC = () => (
           O custo invisível da <br/><span className="text-rose-600">dependência manual.</span>
         </h2>
         <p className="text-lg text-slate-600 leading-relaxed mb-8 font-medium opacity-90">
-          Hoje, a Inpasa lida com um alto volume de chamados repetitivos. Clientes perdem tempo aguardando atendimento humano para tarefas simples, como consultar o status de um pedido ou emitir uma segunda via de boleto.
+          Hoje, a Inpasa lida com um volume mensal de <strong>1.400 a 2.000 chamados</strong>. Este atendimento multicanal sem Portal ou URA inteligente sobrecarrega a equipe, impedindo o escalonamento das vendas e elevando o custo operacional.
         </p>
         
         <div className="space-y-4">
@@ -540,8 +545,8 @@ const ProtocolSection: React.FC = () => (
                 <Layers size={24} />
               </div>
               <div>
-                <span className="text-[10px] lg:text-xs text-slate-400 font-black uppercase tracking-[0.2em]">Fase de Implantação (Setup)</span>
-                <h3 className="text-2xl lg:text-3xl font-black text-slate-900 tracking-tight leading-none mt-1">Total Setup</h3>
+                <span className="text-[10px] lg:text-xs text-slate-400 font-black uppercase tracking-[0.2em]">Consultoria & Desenvolvimento</span>
+                <h3 className="text-2xl lg:text-3xl font-black text-slate-900 tracking-tight leading-none mt-1">Portal + Chatbot + UX</h3>
               </div>
             </div>
             <div className="flex items-baseline gap-1 bg-slate-50 px-4 py-2 rounded-xl">
@@ -598,9 +603,9 @@ const ProtocolSection: React.FC = () => (
               <Activity size={24} />
             </div>
             <div>
-              <span className="text-[10px] lg:text-xs text-emerald-600 font-black uppercase tracking-[0.2em]">Sustentação Operacional</span>
+              <span className="text-[10px] lg:text-xs text-emerald-600 font-black uppercase tracking-[0.2em]">OPEX (SaaS & Nuvem)</span>
               <div className="flex items-baseline gap-2 mt-1">
-                 <h3 className="text-2xl lg:text-3xl font-black text-slate-900 tracking-tight leading-none">Mensalidade</h3>
+                 <h3 className="text-2xl lg:text-3xl font-black text-slate-900 tracking-tight leading-none">Licenças + Infraestrutura</h3>
                  <span className="text-3xl lg:text-4xl font-black text-emerald-600 tracking-tighter ml-2 lg:ml-4">R$ 7.000</span>
                  <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">/ Mês</span>
               </div>
@@ -609,10 +614,10 @@ const ProtocolSection: React.FC = () => (
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 lg:border-l-2 lg:border-slate-100 lg:pl-8">
             {[
-              'Hospedagem em Nuvem Segura',
-              'Suporte Técnico Dedicado',
-              'Aprimoramento Contínuo da IA',
-              'Manutenção Preventiva'
+              'Infraestrutura em Nuvem Isolada',
+              'Licenciamento de Motor IA (Tokens)',
+              'Suporte Técnico Pós Go-Live (90d)',
+              'SLA: Manutenção Evolutiva'
             ].map(item => (
               <div key={item} className="flex items-center gap-3">
                 <CheckCircle2 size={18} className="text-emerald-500 shrink-0" /> 
