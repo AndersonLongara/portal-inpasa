@@ -678,62 +678,56 @@ const CorporateLoader: React.FC = () => (
 );
 
 const Footer: React.FC = () => (
-  <footer className="w-full px-8 pb-12 pt-8 bg-slate-50 snap-start">
-    <div className="max-w-7xl mx-auto">
-      <div className="bg-slate-900 rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative overflow-hidden group">
-        {/* Efeito Visual de Fundo */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-600/10 blur-[100px] rounded-full group-hover:bg-emerald-600/20 transition-all duration-700" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-slate-800/50 blur-[80px] rounded-full pointer-events-none" />
+  <footer className="w-full bg-white border-t border-slate-200 pt-16 pb-12 px-8 snap-start mt-auto">
+    <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+      
+      {/* Coluna 1: Branding */}
+      <div className="flex flex-col items-start gap-6 max-w-sm">
+        <a 
+          href="https://altrahub.com.br" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="transition-transform hover:scale-105 active:scale-95 duration-300"
+        >
+          <img 
+            src="/altrahub-logo.svg" 
+            alt="AltraHub" 
+            className="h-8 w-auto"
+          />
+        </a>
+        <p className="text-slate-500 text-sm font-medium leading-relaxed">
+          Especialistas em transformar processos complexos em fluxos digitais de alta performance. O DNA AltraHub foca em escala, segurança e excelência estética.
+        </p>
+      </div>
 
-        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
-          {/* Lado Esquerdo: Identidade */}
-          <div className="flex flex-col items-center md:items-start gap-4">
-            <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.4em]">Solução Desenvolvida por</span>
-            <a 
-              href="https://altrahub.com.br" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="transition-all hover:scale-105 active:scale-95 duration-300"
-            >
-              <img 
-                src="/altrahub-logo-light.svg" 
-                alt="AltraHub" 
-                className="h-10 w-auto"
-              />
-            </a>
-            <p className="text-slate-400 text-xs font-medium max-w-[280px] text-center md:text-left leading-relaxed">
-              Transformando processos complexos em experiências digitais simples e de alta performance.
-            </p>
-          </div>
+      {/* Coluna 2: Links e Contato */}
+      <div className="flex flex-col md:items-end gap-6 h-full justify-between">
+        <div className="flex flex-col md:items-end gap-4">
+          <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Nossos Canais</span>
+          <a 
+            href="https://altrahub.com.br" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="group flex items-center gap-2 text-slate-900 text-xs font-bold uppercase tracking-widest hover:text-emerald-600 transition-colors"
+          >
+            Conheça o Site Oficial
+            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+          </a>
+        </div>
 
-          {/* Lado Direito: Ação e Créditos */}
-          <div className="flex flex-col items-center md:items-end gap-6">
-            <div className="flex items-center gap-6">
-              <a 
-                href="https://altrahub.com.br" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group/link flex items-center gap-2 text-white text-xs font-bold uppercase tracking-widest hover:text-emerald-400 transition-colors"
-              >
-                Conheça a AltraHub
-                <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
-              </a>
-            </div>
-            
-            <div className="flex flex-col items-center md:items-end gap-1 border-t border-slate-800 pt-6 w-full md:w-auto">
-              <p className="text-slate-500 text-[10px] font-bold uppercase tracking-wider">© 2026 AltraHub Software House</p>
-              <a 
-                href="https://altrahub.com.br" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-slate-300 text-[11px] font-black hover:text-emerald-400 transition-colors"
-              >
-                www.altrahub.com.br
-              </a>
-            </div>
-          </div>
+        <div className="flex flex-col md:items-end gap-1 pt-6 border-t border-slate-100 w-full">
+          <p className="text-slate-400 text-[10px] font-bold uppercase tracking-wider">© 2026 AltraHub Software House</p>
+          <a 
+            href="https://altrahub.com.br" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-emerald-600 text-[11px] font-black hover:underline decoration-2 underline-offset-4"
+          >
+            www.altrahub.com.br
+          </a>
         </div>
       </div>
+
     </div>
   </footer>
 );
