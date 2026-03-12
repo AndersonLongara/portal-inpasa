@@ -778,10 +778,10 @@ const GovernanceSection: React.FC = () => (
       <div className="w-full max-w-7xl mb-10 text-center">
         <SectionTag text="Governança & Garantias" />
         <h2 className="text-4xl font-extrabold text-slate-900 tracking-tight mt-2">
-          Transparência Total: Escopo e Entregáveis
+          Escopo da Implantação Inicial
         </h2>
-        <p className="text-slate-500 max-w-2xl mx-auto mt-4 text-lg">
-          Definição clara do que compõe a fase inicial, garantindo alinhamento e agilidade na entrega.
+        <p className="text-slate-500 max-w-2xl mx-auto mt-4 text-lg italic">
+          As funcionalidades descritas referem-se à primeira fase do portal, podendo evoluir conforme necessidades futuras da Inpasa.
         </p>
       </div>
 
@@ -843,6 +843,14 @@ const GovernanceSection: React.FC = () => (
                 <div className="w-1 h-1 bg-slate-400 rounded-full" />
                 <span>Desenvolvimento de App Mobile nativo</span>
               </li>
+              <li className="flex items-center gap-2">
+                <div className="w-1 h-1 bg-slate-400 rounded-full" />
+                <span>Desenvolvimento de novas integrações não previstas</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="w-1 h-1 bg-slate-400 rounded-full" />
+                <span>Treinamento de IA com bases documentais extensas</span>
+              </li>
             </ul>
             <div className="mt-4 p-3 bg-white border border-slate-200 rounded-xl text-[10px] text-slate-400">
                *Estas funcionalidades poderão ser avaliadas em fases futuras.
@@ -871,10 +879,13 @@ const GovernanceSection: React.FC = () => (
               <h4 className="font-bold text-slate-700 text-xs mb-2 mt-4">Plano Mensal Inclui:</h4>
               <ul className="text-[11px] text-slate-600 space-y-1.5 list-disc pl-4">
                 <li>Manutenção e Correção de Bugs</li>
-                <li><strong>8h de Pequenas Melhorias</strong></li>
+                <li><strong>8h de Pequenas Melhorias</strong>*</li>
                 <li>Hospedagem Gerenciada e Backups</li>
               </ul>
             </div>
+            <p className="text-[9px] text-slate-400 italic mt-auto">
+              *Pequenas melhorias correspondem a ajustes que demandem até 8 horas de desenvolvimento por mês.
+            </p>
           </div>
         </div>
 
