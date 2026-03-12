@@ -611,6 +611,7 @@ const ProtocolSection: React.FC = () => (
         <motion.button 
           whileHover={{ scale: 1.05, backgroundColor: '#059669', boxShadow: '0 0 30px rgba(16, 185, 129, 0.4)' }}
           whileTap={{ scale: 0.95 }}
+          onClick={() => window.open('https://wa.me/5551994195853', '_blank')}
           className="w-full md:w-auto px-10 py-4 lg:px-12 lg:py-5 bg-emerald-600 text-white font-black text-sm uppercase tracking-widest rounded-2xl shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center gap-3 z-10 motion-gpu shrink-0 whitespace-nowrap"
         >
           Aprovar Projeto
