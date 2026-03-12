@@ -3,6 +3,7 @@ import {
   motion
 } from 'framer-motion';
 import DemoPage from './DemoPage';
+import SecurityReport from './SecurityReport';
 import { 
   Cpu, 
   Activity, 
@@ -22,7 +23,8 @@ import {
   LayoutDashboard,
   CreditCard,
   DownloadCloud,
-  Network
+  Network,
+  ShieldCheck
 } from 'lucide-react';
 
 import type { Transition } from 'framer-motion';
@@ -34,7 +36,7 @@ const springTransition: Transition = { type: 'spring', stiffness: 400, damping: 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<number>(0);
   const [systemReady, setSystemReady] = useState<boolean>(false);
-  const [currentView, setCurrentView] = useState<'proposal' | 'demo'>('proposal');
+  const [currentView, setCurrentView] = useState<'proposal' | 'demo' | 'security'>('proposal');
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -55,6 +57,10 @@ const App: React.FC = () => {
     return <DemoPage onBack={() => setCurrentView('proposal')} />;
   }
 
+  if (currentView === 'security') {
+    return <SecurityReport onBack={() => setCurrentView('proposal')} />;
+  }
+
   if (!systemReady) return <CorporateLoader />;
 
   return (
@@ -64,6 +70,7 @@ const App: React.FC = () => {
         activeSection={activeSection} 
         onNavClick={scrollToSection} 
         onDemoClick={() => setCurrentView('demo')}
+        onSecurityClick={() => setCurrentView('security')}
       />
 
       <main 
@@ -81,7 +88,7 @@ const App: React.FC = () => {
         <ArchitectureSection />
         <StrategySection />
         <ProtocolSection />
-        <Footer />
+        <Footer onSecurityClick={() => setCurrentView('security')} />
       </main>
     </div>
   );
@@ -110,9 +117,10 @@ interface TopNavigationProps {
   activeSection: number;
   onNavClick: (index: number) => void;
   onDemoClick: () => void;
+  onSecurityClick: () => void;
 }
 
-const TopNavigation: React.FC<TopNavigationProps> = ({ activeSection, onNavClick, onDemoClick }) => {
+const TopNavigation: React.FC<TopNavigationProps> = ({ activeSection, onNavClick, onDemoClick, onSecurityClick }) => {
   const sections = [
     "Resumo", "O Desafio", "A Plataforma", "Arquitetura", "Roadmap", "Investimento"
   ];
@@ -160,6 +168,12 @@ const TopNavigation: React.FC<TopNavigationProps> = ({ activeSection, onNavClick
       </div>
 
       <div className="flex items-center gap-4">
+        <button 
+          onClick={onSecurityClick}
+          className="hidden md:flex text-slate-500 hover:text-emerald-600 px-4 py-2 text-[10px] font-bold uppercase tracking-widest transition-colors flex items-center gap-1.5"
+        >
+          <ShieldCheck size={14}/> Segurança & LGPD
+        </button>
         <button 
           onClick={onDemoClick}
           className="hidden md:flex bg-emerald-50 text-emerald-700 px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest border border-emerald-200 hover:bg-emerald-100 transition-all active:scale-95"
@@ -677,7 +691,11 @@ const CorporateLoader: React.FC = () => (
   </div>
 );
 
-const Footer: React.FC = () => (
+interface FooterProps {
+  onSecurityClick: () => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onSecurityClick }) => (
   <footer className="w-full bg-slate-900 rounded-t-[2rem] pt-16 pb-12 px-8 snap-start mt-auto relative overflow-hidden">
     {/* Efeitos Visuais de Fundo */}
     <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-600/10 blur-[100px] rounded-full pointer-events-none" />
@@ -717,6 +735,14 @@ const Footer: React.FC = () => (
             Conheça o Site Oficial
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
           </a>
+          
+          <button 
+            onClick={onSecurityClick}
+            className="group flex items-center gap-2 text-slate-400 text-xs font-bold uppercase tracking-widest hover:text-emerald-400 transition-colors mt-2"
+          >
+            Relatório de Segurança & LGPD
+            <ShieldCheck size={14} className="group-hover:scale-110 transition-transform" />
+          </button>
         </div>
 
         <div className="flex flex-col md:items-end gap-1 pt-6 border-t border-slate-800 w-full">
