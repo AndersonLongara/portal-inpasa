@@ -676,30 +676,16 @@ const ArchitectureSection: React.FC = () => (
             
             <div className="flex flex-col lg:flex-row gap-6 justify-between items-stretch max-w-6xl mx-auto mt-4">
               
-              <div className="flex-1 bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col items-center">
-                <TechIcon src="https://cdn.simpleicons.org/turborepo/EF4444" alt="Turborepo" size={32} className="mb-2 opacity-100 grayscale-0" />
-                <h4 className="font-bold text-xs text-slate-800">Workspace Monorepo</h4>
-                <p className="text-[10px] text-slate-500 text-center mt-1">Gestão de código unificada (Turbo/Nx).</p>
-              </div>
-
-              <div className="flex-1 bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col items-center">
-                <TechIcon src="https://cdn.simpleicons.org/github/181717" alt="GitHub" size={32} className="mb-2 opacity-100 grayscale-0" />
-                <h4 className="font-bold text-xs text-slate-800">CI/CD Seguro</h4>
-                <p className="text-[10px] text-slate-500 text-center mt-1">GitHub Actions com scans de segurança.</p>
-              </div>
-
-              <div className="flex-1 bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col items-center">
-                <TechIcon src="https://cdn.simpleicons.org/sentry/362D59" alt="Sentry" size={32} className="mb-2 opacity-100 grayscale-0" />
-                <h4 className="font-bold text-xs text-slate-800">Monitoramento 24/7</h4>
-                <p className="text-[10px] text-slate-500 text-center mt-1">Rastreabilidade e log de erros em tempo real.</p>
-              </div>
               <div className="flex-1 bg-white border-2 border-slate-200 rounded-xl p-5 shadow-sm flex flex-col relative overflow-hidden">
                 <div className="absolute -right-4 -bottom-4 opacity-5"><GitBranch size={80} /></div>
+                <div className="absolute top-2 right-2 opacity-20">
+                  <TechIcon src="https://cdn.simpleicons.org/turborepo/EF4444" alt="Turborepo" size={24} className="grayscale-0" />
+                </div>
                 <div className="flex items-center gap-3 mb-3">
                   <GitBranch className="text-slate-600" size={20} />
                   <h3 className="font-bold text-slate-800 text-sm">Workspace Monorepo</h3>
                 </div>
-                <p className="text-xs text-slate-500 mb-3">Portal, API e Integração Chatbot unificados (Turborepo/Nx).</p>
+                <p className="text-xs text-slate-500 mb-3 leading-relaxed">Portal, API e Integração Chatbot unificados (Turbo/Nx).</p>
                 <TagBadge icon={Lock} text="Governança de Código" color="emerald" />
               </div>
 
@@ -711,11 +697,14 @@ const ArchitectureSection: React.FC = () => (
 
               <div className="flex-1 bg-white border-2 border-slate-200 rounded-xl p-5 shadow-sm flex flex-col relative overflow-hidden">
                 <div className="absolute -right-4 -bottom-4 opacity-5"><Box size={80} /></div>
+                <div className="absolute top-2 right-2 opacity-20">
+                  <TechIcon src="https://cdn.simpleicons.org/github/181717" alt="GitHub" size={24} className="grayscale-0" />
+                </div>
                 <div className="flex items-center gap-3 mb-3">
                   <Box className="text-indigo-500" size={20} />
-                  <h3 className="font-bold text-slate-800 text-sm">Shared Packages</h3>
+                  <h3 className="font-bold text-slate-800 text-sm">CI/CD & Shared Packages</h3>
                 </div>
-                <p className="text-xs text-slate-500 mb-3">Validações DTO comuns ao Portal, Bot e Salesforce.</p>
+                <p className="text-xs text-slate-500 mb-3 leading-relaxed">GitHub Actions com scans de segurança e DTOs unificados.</p>
                 <TagBadge icon={CheckSquare} text="Fonte Única da Verdade" color="emerald" />
               </div>
 
@@ -727,11 +716,14 @@ const ArchitectureSection: React.FC = () => (
 
               <div className="flex-1 bg-white border-2 border-slate-200 rounded-xl p-5 shadow-sm flex flex-col relative overflow-hidden">
                 <div className="absolute -right-4 -bottom-4 opacity-5"><ShieldCheck size={80} /></div>
+                <div className="absolute top-2 right-2 opacity-20">
+                  <TechIcon src="https://cdn.simpleicons.org/sentry/362D59" alt="Sentry" size={24} className="grayscale-0" />
+                </div>
                 <div className="flex items-center gap-3 mb-3">
                   <ShieldCheck className="text-emerald-500" size={20} />
-                  <h3 className="font-bold text-slate-800 text-sm">Deploy Zero-Downtime</h3>
+                  <h3 className="font-bold text-slate-800 text-sm">Monitoramento & Deploy</h3>
                 </div>
-                <p className="text-xs text-slate-500 mb-3">Testes E2E automáticos para garantir a métrica de 99.5% uptime.</p>
+                <p className="text-xs text-slate-500 mb-3 leading-relaxed">Rastreabilidade 24/7 com Sentry e Deploy Zero-Downtime.</p>
                 <TagBadge icon={ShieldAlert} text="QA & Testes Estáticos" color="emerald" />
               </div>
 
