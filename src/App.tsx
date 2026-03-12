@@ -397,7 +397,7 @@ const ArchitectureSection: React.FC = () => (
       <div className="text-center mb-16">
         <SectionTag text="03 // Engenharia da Solução" />
         <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-4 text-tight">
-          ArquArquitetura Integrada
+          Arquitetura Integrada
         </h2>
         <p className="text-slate-500 font-bold text-sm">Design escalável conectado diretamente ao coração do seu negócio.</p>
       </div>
