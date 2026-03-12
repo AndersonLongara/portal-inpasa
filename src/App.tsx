@@ -37,7 +37,8 @@ import {
   CheckSquare,
   Cloud,
   Headset,
-  Zap
+  Zap,
+  Clock
 } from 'lucide-react';
 
 import type { Transition } from 'framer-motion';
@@ -99,6 +100,7 @@ const App: React.FC = () => {
         <DiagnosticSection />
         <SolutionSection />
         <ArchitectureSection />
+        <GovernanceSection />
         <StrategySection />
         <ProtocolSection />
         <Footer onSecurityClick={() => setCurrentView('security')} />
@@ -135,7 +137,7 @@ interface TopNavigationProps {
 
 const TopNavigation: React.FC<TopNavigationProps> = ({ activeSection, onNavClick, onDemoClick, onSecurityClick }) => {
   const sections = [
-    "Resumo", "O Desafio", "A Plataforma", "Arquitetura", "Roadmap", "Investimento"
+    "Resumo", "O Desafio", "A Plataforma", "Arquitetura", "Escopo", "Roadmap", "Investimento"
   ];
 
   return (
@@ -771,6 +773,131 @@ const ArchitectureSection: React.FC = () => (
       </div>
   </section>
 );
+const GovernanceSection: React.FC = () => (
+   <section className="min-h-screen w-full snap-start flex flex-col items-center justify-center bg-white pb-16 pt-24 px-8 text-slate-800 relative xl:scale-[0.9] origin-top">
+      <div className="w-full max-w-7xl mb-10 text-center">
+        <SectionTag text="Governança & Garantias" />
+        <h2 className="text-4xl font-extrabold text-slate-900 tracking-tight mt-2">
+          Transparência Total: Escopo e Entregáveis
+        </h2>
+        <p className="text-slate-500 max-w-2xl mx-auto mt-4 text-lg">
+          Definição clara do que compõe a fase inicial, garantindo alinhamento e agilidade na entrega.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl">
+        
+        {/* ESCÔPO INCLUÍDO */}
+        <div className="bg-emerald-50/50 border-2 border-emerald-200 rounded-2xl p-6 shadow-sm flex flex-col hover:shadow-md transition-all">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="p-2 bg-emerald-600 rounded-lg text-white">
+              <CheckCircle2 size={24} />
+            </div>
+            <h3 className="font-bold text-slate-800 text-xl">Escopo Incluído</h3>
+          </div>
+          <div className="space-y-4 flex-1">
+            <div>
+              <h4 className="font-bold text-slate-700 text-sm border-b border-emerald-100 pb-1 mb-2">Portal do Cliente (B2B)</h4>
+              <ul className="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
+                <li>Autenticação segura de clientes</li>
+                <li>Dashboard de faturas e boletos</li>
+                <li>Consulta e download de pedidos</li>
+                <li>Histórico unificado e documentos</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-slate-700 text-sm border-b border-emerald-100 pb-1 mb-2">Assistente Virtual IA</h4>
+              <ul className="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
+                <li>FAQ interativo e navegação guiada</li>
+                <li>Consulta de situação financeira</li>
+                <li>Roteamento para transbordo humano</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* FORA DE ESCOPO */}
+        <div className="bg-slate-50 border-2 border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col hover:shadow-md transition-all">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="p-2 bg-slate-400 rounded-lg text-white">
+              <AlertTriangle size={24} />
+            </div>
+            <h3 className="font-bold text-slate-800 text-xl">Fora do Escopo</h3>
+          </div>
+          <div className="space-y-4 flex-1">
+            <p className="text-xs text-slate-500 font-medium italic mb-2">Não fazem parte desta implantação inicial:</p>
+            <ul className="text-xs text-slate-600 space-y-1.5">
+              <li className="flex items-center gap-2">
+                <div className="w-1 h-1 bg-slate-400 rounded-full" />
+                <span>Integração nativa WhatsApp Business</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="w-1 h-1 bg-slate-400 rounded-full" />
+                <span>Desenvolvimento de CRM próprio</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="w-1 h-1 bg-slate-400 rounded-full" />
+                <span>Automação completa via Salesforce</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="w-1 h-1 bg-slate-400 rounded-full" />
+                <span>Desenvolvimento de App Mobile nativo</span>
+              </li>
+            </ul>
+            <div className="mt-4 p-3 bg-white border border-slate-200 rounded-xl text-[10px] text-slate-400">
+               *Estas funcionalidades poderão ser avaliadas em fases futuras.
+            </div>
+          </div>
+        </div>
+
+        {/* SUPORTE E SLA */}
+        <div className="bg-indigo-50/50 border-2 border-indigo-200 rounded-2xl p-6 shadow-sm flex flex-col hover:shadow-md transition-all">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="p-2 bg-indigo-600 rounded-lg text-white">
+              <Clock size={24} />
+            </div>
+            <h3 className="font-bold text-slate-800 text-xl">Suporte & SLA</h3>
+          </div>
+          <div className="space-y-4 flex-1">
+            <div className="bg-white p-3 rounded-xl border border-indigo-100 flex items-center justify-between">
+              <span className="text-xs font-bold text-slate-700">Disponibilidade</span>
+              <span className="text-xs font-black text-indigo-600">99.5% Uptime</span>
+            </div>
+            <div className="bg-white p-3 rounded-xl border border-indigo-100 flex items-center justify-between">
+              <span className="text-xs font-bold text-slate-700">Resp. Suporte</span>
+              <span className="text-xs font-black text-indigo-600">&lt; 24 Horas</span>
+            </div>
+            <div>
+              <h4 className="font-bold text-slate-700 text-xs mb-2 mt-4">Plano Mensal Inclui:</h4>
+              <ul className="text-[11px] text-slate-600 space-y-1.5 list-disc pl-4">
+                <li>Manutenção e Correção de Bugs</li>
+                <li><strong>8h de Pequenas Melhorias</strong></li>
+                <li>Hospedagem Gerenciada e Backups</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div className="mt-12 w-full max-w-7xl flex flex-col items-center">
+        <div className="bg-slate-900 text-white p-6 rounded-3xl flex flex-col md:flex-row items-center gap-8 w-full shadow-2xl relative overflow-hidden group">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 blur-[60px] rounded-full group-hover:bg-emerald-500/20 transition-all duration-500" />
+          <div className="flex-1">
+            <h4 className="text-emerald-400 font-bold uppercase tracking-widest text-[10px] mb-2">Critério de Entrega Final</h4>
+            <p className="text-slate-200 text-sm leading-relaxed">
+              O projeto será considerado concluído quando o portal estiver disponível em ambiente de produção, com as funcionalidades operacionais e integração básica validada pela equipe técnica da Inpasa.
+            </p>
+          </div>
+          <div className="w-px h-16 bg-slate-800 hidden md:block" />
+          <div className="flex-1 italic text-slate-400 text-xs">
+            "Esta proposta contempla a implantação de uma primeira versão da plataforma, que poderá evoluir conforme o uso e necessidades da Inpasa."
+          </div>
+        </div>
+      </div>
+   </section>
+);
+
 
 const StrategySection: React.FC = () => (
   <section className="h-screen w-full snap-start flex flex-col justify-center bg-white px-12 md:px-24 pt-16">
