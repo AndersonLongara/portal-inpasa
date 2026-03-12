@@ -449,7 +449,7 @@ const TagBadge = ({ icon: Icon, text, color = "emerald" }: { icon: any, text: st
   return (
     <div className={`flex items-center gap-2 border text-[10px] xl:text-xs font-semibold px-2.5 py-1.5 rounded-md mt-2 w-full shadow-sm ${colorClasses[color]}`}>
       <Icon size={14} className={`shrink-0 ${colorClasses[color].split(' ')[0]}`} />
-      <span className="leading-tight text-slate-700 whitespace-nowrap">{text}</span>
+      <span className="leading-tight text-slate-700 text-[9px] xl:text-[10px]">{text}</span>
     </div>
   );
 };
