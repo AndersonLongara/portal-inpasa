@@ -459,9 +459,9 @@ const NodeCard = ({ children, borderColor = "border-slate-200", bg = "bg-white" 
 );
 
 const ArchitectureSection: React.FC = () => (
-   <section className="min-h-screen w-full snap-start flex flex-col items-center justify-center bg-slate-50/50 pb-16 pt-24 px-4 sm:px-8 text-slate-800 relative xl:scale-95 origin-center">
+   <section className="min-h-screen w-full snap-start flex flex-col items-center justify-center bg-slate-50/50 pb-16 pt-24 px-4 sm:px-8 text-slate-800 relative xl:scale-[0.9] origin-center">
       {/* Cabeçalho do Diagrama */}
-      <div className="w-full max-w-[1400px] mb-8 flex flex-col md:flex-row items-start md:items-center justify-between bg-white p-6 rounded-2xl border border-slate-200 shadow-sm gap-4">
+      <div className="w-full max-w-[1536px] mb-8 flex flex-col md:flex-row items-start md:items-center justify-between bg-white p-6 rounded-2xl border border-slate-200 shadow-sm gap-4">
         <div>
           <h1 className="text-2xl font-extrabold text-slate-900 flex items-center gap-3 tracking-tight">
             <Network className="text-emerald-600" size={28} />
@@ -490,11 +490,11 @@ const ArchitectureSection: React.FC = () => (
       </div>
 
       {/* CANVAS DO DIAGRAMA */}
-      <div className="w-full max-w-[1400px] bg-white rounded-3xl border border-slate-200 shadow-xl relative overflow-hidden">
+      <div className="w-full max-w-[1536px] bg-white rounded-3xl border border-slate-200 shadow-xl relative">
         
         <div className="absolute inset-0 z-0 opacity-40 pointer-events-none bg-[radial-gradient(#cbd5e1_1.5px,transparent_1.5px)] [background-size:24px_24px]"></div>
 
-        <div className="relative z-10 p-6 md:p-10 lg:p-12 flex flex-col lg:flex-row items-center lg:items-stretch justify-center gap-0">
+        <div className="relative z-10 p-8 md:p-12 lg:p-14 flex flex-col lg:flex-row items-center lg:items-stretch justify-center gap-0">
 
           {/* COLUNA 1: CANAIS DE ENTRADA */}
           <div className="flex flex-col justify-center gap-6 w-full max-w-[280px] lg:w-48 xl:w-56 shrink-0 z-10">
