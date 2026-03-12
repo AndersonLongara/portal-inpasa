@@ -28,7 +28,6 @@ import {
   Shield,
   Network,
   Lock,
-  Users,
   Smartphone,
   Globe,
   Brain,
