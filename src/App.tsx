@@ -452,8 +452,23 @@ const TagBadge = ({ icon: Icon, text, color = "emerald" }: { icon: any, text: st
   );
 };
 
-const NodeCard = ({ children, borderColor = "border-slate-200", bg = "bg-white" }: { children: React.ReactNode, borderColor?: string, bg?: string }) => (
-  <div className={`${bg} border-2 ${borderColor} rounded-xl p-4 xl:p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 relative text-center flex flex-col items-center w-full`}>
+const TechIcon = ({ src, alt, size = 16, className = "" }: { src: string, alt: string, size?: number, className?: string }) => (
+  <img 
+    src={src} 
+    alt={alt} 
+    width={size} 
+    height={size} 
+    className={`inline-block grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100 ${className}`}
+  />
+);
+
+const NodeCard = ({ children, borderColor = "border-slate-200", bg = "bg-white", logo }: { children: React.ReactNode, borderColor?: string, bg?: string, logo?: React.ReactNode }) => (
+  <div className={`${bg} border-2 ${borderColor} rounded-xl p-4 xl:p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 relative text-center flex flex-col items-center w-full overflow-hidden`}>
+    {logo && (
+      <div className="absolute top-2 right-2 opacity-10">
+        {logo}
+      </div>
+    )}
     {children}
   </div>
 );
@@ -498,7 +513,7 @@ const ArchitectureSection: React.FC = () => (
 
           {/* COLUNA 1: CANAIS DE ENTRADA */}
           <div className="flex flex-col justify-center gap-6 w-full max-w-[280px] lg:w-48 xl:w-56 shrink-0 z-10">
-            <NodeCard borderColor="border-slate-300">
+            <NodeCard borderColor="border-slate-300" logo={<TechIcon src="https://cdn.simpleicons.org/whatsapp/25D366" alt="WhatsApp" size={40} />}>
               <div className="w-12 h-12 bg-gradient-to-br from-green-50 to-green-100 text-green-600 rounded-full flex items-center justify-center mb-3 shadow-sm border border-green-200">
                 <MessageSquare size={24} />
               </div>
@@ -512,7 +527,12 @@ const ArchitectureSection: React.FC = () => (
                 <Globe size={24} />
               </div>
               <h3 className="font-bold text-slate-800 text-sm">Web / Browser</h3>
-              <p className="text-xs text-slate-500 mt-1 mb-2">Acesso B2B/B2C</p>
+              <div className="flex gap-2 mb-2">
+                <TechIcon src="https://cdn.simpleicons.org/react/61DAFB" alt="React" size={14} />
+                <TechIcon src="https://cdn.simpleicons.org/tailwindcss/06B6D4" alt="Tailwind" size={14} />
+                <TechIcon src="https://cdn.simpleicons.org/typescript/3178C6" alt="TS" size={14} />
+              </div>
+              <p className="text-xs text-slate-500 mt-1 mb-2 font-medium">Ecossistema Moderno</p>
               <TagBadge icon={Users} text="Autenticação Segura" color="emerald" />
             </NodeCard>
           </div>
@@ -526,12 +546,12 @@ const ArchitectureSection: React.FC = () => (
             </span>
 
             {/* WAF */}
-            <NodeCard borderColor="border-slate-300">
+            <NodeCard borderColor="border-slate-300" logo={<TechIcon src="https://cdn.simpleicons.org/cloudflare/F38020" alt="Cloudflare" size={40} />}>
               <div className="flex items-center gap-3 mb-2 w-full">
                 <Shield className="text-slate-600 shrink-0" size={20} />
                 <h3 className="font-bold text-slate-800 text-sm text-left">Cloudflare WAF</h3>
               </div>
-              <p className="text-xs text-slate-500 mb-2 text-left w-full">Filtro de pacotes e mitigação DDoS.</p>
+              <p className="text-xs text-slate-500 mb-2 text-left w-full">Segurança de Borda e Mitigação DDoS.</p>
             </NodeCard>
 
             <div className="flex justify-center my-[-16px] relative z-10 text-slate-400">
@@ -570,11 +590,16 @@ const ArchitectureSection: React.FC = () => (
              <span className="absolute -top-3 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-6 bg-slate-200 text-slate-800 text-[10px] font-bold px-3 py-1 rounded-full border border-slate-300 uppercase tracking-wider whitespace-nowrap shadow-sm">
               Orquestração Segura
             </span>
-            <NodeCard borderColor="border-slate-400">
+            <NodeCard borderColor="border-slate-400" logo={<TechIcon src="https://cdn.simpleicons.org/nodedotjs/339933" alt="Node" size={40} />}>
               <div className="w-14 h-14 bg-gradient-to-br from-slate-100 to-slate-200 text-slate-700 rounded-full flex items-center justify-center mb-4 border border-slate-300 shadow-sm">
                 <Cpu size={28} />
               </div>
               <h3 className="font-bold text-slate-900 text-sm">Microserviços Node</h3>
+              <div className="flex gap-2 mb-3">
+                 <TechIcon src="https://cdn.simpleicons.org/nestjs/E0234E" alt="NestJS" size={12} />
+                 <TechIcon src="https://cdn.simpleicons.org/auth0/EB5424" alt="Auth0" size={12} />
+                 <TechIcon src="https://cdn.simpleicons.org/prisma/2D3748" alt="Prisma" size={12} />
+              </div>
               <p className="text-xs text-slate-500 mt-2 mb-4 leading-relaxed">
                 Roteia dados entre Whatsapp, Portal, ERP e Salesforce sem expor os sistemas core.
               </p>
@@ -615,21 +640,24 @@ const ArchitectureSection: React.FC = () => (
               <div className="flex-1 flex flex-col gap-4">
                 
                 {/* ERP Sync */}
-                <div className="bg-slate-900 border-2 border-slate-800 rounded-xl p-4 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all relative text-white text-left w-full">
+                <div className="bg-slate-900 border-2 border-slate-800 rounded-xl p-4 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all relative text-white text-left w-full overflow-hidden">
+                   <div className="absolute top-2 right-2 opacity-20">
+                    <TechIcon src="https://cdn.simpleicons.org/vercel/FFFFFF" alt="Vercel" size={24} className="grayscale-0" />
+                  </div>
                   <div className="flex items-center gap-3 mb-2">
                     <Server className="text-lime-400 shrink-0" size={20} />
-                    <h3 className="font-bold text-white text-sm">ERP Inpasa (APIs)</h3>
+                    <h3 className="font-bold text-white text-sm">Hospedagem Vercel</h3>
                   </div>
-                  <p className="text-[11px] text-slate-400 leading-relaxed">Sincronização de pedidos, rastreamento e faturas em tempo real.</p>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">Performance Global e Segurança de Borda (Premium SDK).</p>
                 </div>
 
                 {/* Database Custom */}
-                <NodeCard borderColor="border-emerald-300">
+                <NodeCard borderColor="border-emerald-300" logo={<TechIcon src="https://cdn.simpleicons.org/postgresql/4169E1" alt="Postgres" size={32} />}>
                   <div className="flex items-center gap-3 mb-2 w-full">
                     <Database className="text-emerald-600 shrink-0" size={20} />
-                    <h3 className="font-bold text-slate-800 text-sm text-left">PostgreSQL Cache</h3>
+                    <h3 className="font-bold text-slate-800 text-sm text-left">PostgreSQL & Redis</h3>
                   </div>
-                  <p className="text-[11px] text-slate-500 mb-2 text-left w-full">Isolamento de dados e cache rápido para garantir respostas em &lt;2s.</p>
+                  <p className="text-[11px] text-slate-500 mb-2 text-left w-full">Cache ultra rápido para garantir respostas em &lt;2s.</p>
                   <TagBadge icon={Lock} text="Criptografia LGPD" color="emerald" />
                 </NodeCard>
 
@@ -646,8 +674,25 @@ const ArchitectureSection: React.FC = () => (
               Arquitetura de Qualidade & CI/CD (Garantia de 99.5% Uptime)
             </span>
             
-            <div className="flex flex-col lg:flex-row gap-6 justify-between items-stretch max-w-5xl mx-auto mt-4">
+            <div className="flex flex-col lg:flex-row gap-6 justify-between items-stretch max-w-6xl mx-auto mt-4">
               
+              <div className="flex-1 bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col items-center">
+                <TechIcon src="https://cdn.simpleicons.org/turborepo/EF4444" alt="Turborepo" size={32} className="mb-2 opacity-100 grayscale-0" />
+                <h4 className="font-bold text-xs text-slate-800">Workspace Monorepo</h4>
+                <p className="text-[10px] text-slate-500 text-center mt-1">Gestão de código unificada (Turbo/Nx).</p>
+              </div>
+
+              <div className="flex-1 bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col items-center">
+                <TechIcon src="https://cdn.simpleicons.org/github/181717" alt="GitHub" size={32} className="mb-2 opacity-100 grayscale-0" />
+                <h4 className="font-bold text-xs text-slate-800">CI/CD Seguro</h4>
+                <p className="text-[10px] text-slate-500 text-center mt-1">GitHub Actions com scans de segurança.</p>
+              </div>
+
+              <div className="flex-1 bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col items-center">
+                <TechIcon src="https://cdn.simpleicons.org/sentry/362D59" alt="Sentry" size={32} className="mb-2 opacity-100 grayscale-0" />
+                <h4 className="font-bold text-xs text-slate-800">Monitoramento 24/7</h4>
+                <p className="text-[10px] text-slate-500 text-center mt-1">Rastreabilidade e log de erros em tempo real.</p>
+              </div>
               <div className="flex-1 bg-white border-2 border-slate-200 rounded-xl p-5 shadow-sm flex flex-col relative overflow-hidden">
                 <div className="absolute -right-4 -bottom-4 opacity-5"><GitBranch size={80} /></div>
                 <div className="flex items-center gap-3 mb-3">
