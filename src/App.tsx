@@ -694,7 +694,7 @@ const Footer: React.FC = () => (
           className="transition-transform hover:scale-105 active:scale-95 duration-300"
         >
           <img 
-            src="/altrahub-logo.svg" 
+            src="/altrahub-logo-light.svg" 
             alt="AltraHub" 
             className="h-8 w-auto"
           />
