@@ -13,7 +13,6 @@ import {
   AlertTriangle,
   Rocket,
   ArrowRight,
-  ArrowLeft,
   FileText,
   Database,
   Search,
@@ -24,9 +23,21 @@ import {
   CreditCard,
   DownloadCloud,
   ShieldCheck,
-  GlobeLock,
   Server,
-  Box
+  Box,
+  Shield,
+  Network,
+  Lock,
+  Users,
+  Smartphone,
+  Globe,
+  FileSignature,
+  ShieldAlert,
+  GitBranch,
+  CheckSquare,
+  Cloud,
+  Headset,
+  Zap
 } from 'lucide-react';
 
 import type { Transition } from 'framer-motion';
@@ -408,86 +419,280 @@ const SolutionSection: React.FC = () => (
   </section>
 );
 
+// Componente de Seta Responsiva (Muda de direção no mobile)
+const Arrow = ({ label }: { label?: string }) => (
+  <div className="flex items-center justify-center relative py-8 lg:py-0 lg:px-4 shrink-0">
+    {label && (
+      <span className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 lg:-top-6 lg:translate-y-0 text-[10px] sm:text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 whitespace-nowrap z-10 shadow-sm backdrop-blur-sm">
+        {label}
+      </span>
+    )}
+    <div className="hidden lg:block w-8 xl:w-16 h-0.5 bg-slate-300 relative">
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 border-t-2 border-r-2 border-slate-400 transform rotate-45 transition-all"></div>
+    </div>
+    <div className="block lg:hidden w-0.5 h-16 bg-slate-300 relative">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2 h-2 border-b-2 border-r-2 border-slate-400 transform rotate-45 transition-all"></div>
+    </div>
+  </div>
+);
+
+// Componente de Badge de Segurança/SLA (Tags)
+const TagBadge = ({ icon: Icon, text, color = "emerald" }: { icon: any, text: string, color?: "emerald"|"blue"|"indigo" }) => {
+  const colorClasses = {
+    emerald: "text-emerald-500 bg-white/80 border-emerald-200/50",
+    blue: "text-blue-500 bg-blue-50 border-blue-200",
+    indigo: "text-indigo-500 bg-indigo-50 border-indigo-200"
+  };
+
+  return (
+    <div className={`flex items-center gap-2 border text-[10px] xl:text-xs font-semibold px-2.5 py-1.5 rounded-md mt-2 w-full shadow-sm ${colorClasses[color]}`}>
+      <Icon size={14} className={`shrink-0 ${colorClasses[color].split(' ')[0]}`} />
+      <span className="truncate leading-tight text-slate-700">{text}</span>
+    </div>
+  );
+};
+
+const NodeCard = ({ children, borderColor = "border-slate-200", bg = "bg-white" }: { children: React.ReactNode, borderColor?: string, bg?: string }) => (
+  <div className={`${bg} border-2 ${borderColor} rounded-xl p-4 xl:p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 relative text-center flex flex-col items-center w-full`}>
+    {children}
+  </div>
+);
+
 const ArchitectureSection: React.FC = () => (
-  <section className="h-screen w-full snap-start flex flex-col justify-center bg-slate-900 px-12 md:px-24 pt-16 relative overflow-hidden">
-    <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-600/10 blur-[100px] rounded-full pointer-events-none" />
-    <div className="max-w-7xl mx-auto w-full relative z-10">
-      <div className="text-center mb-12">
-        <motion.div initial={{ opacity: 0, y: -10 }} whileInView={{ opacity: 1, y: 0 }} className="inline-block bg-slate-800 text-emerald-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4 border border-slate-700">03 // Engenharia & Segurança</motion.div>
-        <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4 text-tight">
-          Arquitetura de Grau Institucional
-        </h2>
-        <p className="text-slate-400 font-medium text-sm max-w-2xl mx-auto">
-          Design escalável operando sob 3 linhas de atendimento, com isolamento de dados (Tenant IA) e infraestrutura imune a acessos não autorizados.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-        {/* Diagrama Esquerdo */}
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          className="md:col-span-8 bg-slate-800/40 border border-slate-700/60 p-8 rounded-[2rem] flex flex-col justify-center shadow-2xl"
-        >
-          <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-4 bg-slate-900/80 border border-slate-700 p-4 rounded-2xl relative shadow-lg">
-              <GlobeLock className="text-emerald-500" size={24} />
-              <div>
-                <h4 className="font-bold text-white">WAF & Edge Protection</h4>
-                <p className="text-xs text-slate-400 mt-1">Filtro de tráfego na borda. Bloqueio automático de anomalias e negações DDoS.</p>
-              </div>
-            </div>
-            
-            <div className="flex justify-center -my-2 opacity-50"><ArrowLeft className="rotate-[-90deg] text-emerald-500" size={20}/></div>
-            
-            <div className="flex items-center gap-4 bg-slate-900/80 border border-slate-700 p-4 rounded-2xl relative shadow-lg">
-              <Server className="text-emerald-500" size={24} />
-              <div>
-                <h4 className="font-bold text-white">VPC Isolada (Rede Privada)</h4>
-                <p className="text-xs text-slate-400 mt-1">Backend blindado com acesso estrito ao Salesforce e instâncias do ERP Inpasa.</p>
-              </div>
-            </div>
-
-            <div className="flex justify-center -my-2 opacity-50"><ArrowLeft className="rotate-[-90deg] text-emerald-500" size={20}/></div>
-
-            <div className="flex items-center gap-4 bg-emerald-900/20 border border-emerald-500/30 p-5 rounded-2xl relative shadow-[0_0_30px_rgba(16,185,129,0.1)]">
-              <Box className="text-emerald-400" size={28} />
-              <div>
-                <h4 className="font-bold text-emerald-100 flex items-center gap-2">
-                  IA Cognitiva
-                  <span className="text-[9px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded uppercase tracking-widest border border-emerald-500/20">Zero Retention</span>
-                </h4>
-                <p className="text-xs text-emerald-200/70 mt-1">Modelos isolados de treinamento externo. Criptografia AES-256 e LGPD nativa na base neural.</p>
-              </div>
-            </div>
+   <section className="min-h-screen w-full snap-start flex flex-col items-center justify-center bg-slate-50/50 pb-16 pt-24 px-4 sm:px-8 text-slate-800 relative xl:scale-95 origin-center">
+      {/* Cabeçalho do Diagrama */}
+      <div className="w-full max-w-[1400px] mb-8 flex flex-col md:flex-row items-start md:items-center justify-between bg-white p-6 rounded-2xl border border-slate-200 shadow-sm gap-4">
+        <div>
+          <h1 className="text-2xl font-extrabold text-slate-900 flex items-center gap-3 tracking-tight">
+            <Network className="text-emerald-600" size={28} />
+            03 // Ecossistema Integrado de Atendimento
+          </h1>
+          <p className="text-slate-500 text-sm mt-1 font-medium">
+            Arquitetura para dezenas de clientes focada em SLAs rigorosos (Uptime 99.5%) e deflexão via IA.
+          </p>
+        </div>
+        
+        {/* Legenda de Níveis de Atendimento */}
+        <div className="flex flex-wrap gap-3 md:gap-5 text-xs font-semibold text-slate-600 bg-slate-50 p-3 rounded-xl border border-slate-100">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-blue-100 border border-blue-400 shadow-inner"></div>
+            Nível 1 (Chatbot)
           </div>
-        </motion.div>
-
-        {/* Boxes Direita */}
-        <div className="md:col-span-4 flex flex-col gap-6">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="flex-1 bg-slate-800/40 border border-slate-700/60 p-8 rounded-[2rem] flex flex-col justify-center"
-          >
-            <Database className="text-emerald-400 mb-4" size={28} />
-            <h4 className="text-xl font-bold text-white mb-2">3 Linhas de Defesa</h4>
-            <p className="text-xs text-slate-400 leading-relaxed font-medium">Integração viva: WhatsApp (1ª linha), Portal Web (2ª) e Transbordo Humano Inpasa (3ª).</p>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="flex-1 bg-slate-800/40 border border-slate-700/60 p-8 rounded-[2rem] flex flex-col justify-center"
-          >
-            <ShieldCheck className="text-emerald-400 mb-4" size={28} />
-            <h4 className="text-xl font-bold text-white mb-2">Transações Seguras</h4>
-            <p className="text-xs text-slate-400 leading-relaxed font-medium">Comunicação e payload de chamados trafegam via TLS 1.3 mandatório, assegurando privacidade extrema.</p>
-          </motion.div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-indigo-100 border border-indigo-400 shadow-inner"></div>
+            Nível 2 (Portal)
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-emerald-100 border border-emerald-400 shadow-inner"></div>
+            Nível 3 (Agentes Humanos)
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* CANVAS DO DIAGRAMA */}
+      <div className="w-full max-w-[1400px] bg-white rounded-3xl border border-slate-200 shadow-xl relative overflow-hidden">
+        
+        <div className="absolute inset-0 z-0 opacity-40 pointer-events-none bg-[radial-gradient(#cbd5e1_1.5px,transparent_1.5px)] [background-size:24px_24px]"></div>
+
+        <div className="relative z-10 p-6 md:p-10 lg:p-12 flex flex-col lg:flex-row items-center lg:items-stretch justify-center gap-0">
+
+          {/* COLUNA 1: CANAIS DE ENTRADA */}
+          <div className="flex flex-col justify-center gap-6 w-full max-w-[280px] lg:w-48 xl:w-56 shrink-0 z-10">
+            <NodeCard borderColor="border-slate-300">
+              <div className="w-12 h-12 bg-gradient-to-br from-green-50 to-green-100 text-green-600 rounded-full flex items-center justify-center mb-3 shadow-sm border border-green-200">
+                <MessageSquare size={24} />
+              </div>
+              <h3 className="font-bold text-slate-800 text-sm">WhatsApp Business</h3>
+              <p className="text-xs text-slate-500 mt-1 mb-2">Canal Instantâneo</p>
+              <TagBadge icon={Smartphone} text="Acesso Mobile" color="emerald" />
+            </NodeCard>
+
+            <NodeCard borderColor="border-slate-300">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-50 to-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-3 shadow-sm border border-blue-200">
+                <Globe size={24} />
+              </div>
+              <h3 className="font-bold text-slate-800 text-sm">Web / Browser</h3>
+              <p className="text-xs text-slate-500 mt-1 mb-2">Acesso B2B/B2C</p>
+              <TagBadge icon={Users} text="Autenticação Segura" color="emerald" />
+            </NodeCard>
+          </div>
+
+          <Arrow label="TLS 1.3 Seguro" />
+
+          {/* COLUNA 2: ATENDIMENTO NÍVEL 1 & 2 (BORDA/FRONTEND) */}
+          <div className="flex flex-col gap-6 w-full max-w-[280px] lg:w-56 xl:w-64 shrink-0 bg-gradient-to-b from-slate-50 to-transparent p-5 rounded-2xl border border-slate-200 relative z-10 shadow-sm">
+            <span className="absolute -top-3 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-6 bg-slate-100 text-slate-700 text-[10px] font-bold px-3 py-1 rounded-full border border-slate-300 uppercase tracking-wider whitespace-nowrap shadow-sm">
+              DMZ & Borda Pública
+            </span>
+
+            {/* WAF */}
+            <NodeCard borderColor="border-slate-300">
+              <div className="flex items-center gap-3 mb-2 w-full">
+                <Shield className="text-slate-600 shrink-0" size={20} />
+                <h3 className="font-bold text-slate-800 text-sm text-left">Cloudflare WAF</h3>
+              </div>
+              <p className="text-xs text-slate-500 mb-2 text-left w-full">Filtro de pacotes e mitigação DDoS.</p>
+            </NodeCard>
+
+            <div className="flex justify-center my-[-16px] relative z-10 text-slate-400">
+              <div className="w-0.5 h-8 bg-slate-300"></div>
+            </div>
+
+            {/* Nível 1: Chatbot */}
+            <NodeCard borderColor="border-blue-300" bg="bg-blue-50/50">
+              <div className="flex items-center gap-3 mb-2 w-full">
+                <Bot className="text-blue-600 shrink-0" size={20} />
+                <h3 className="font-bold text-slate-800 text-sm text-left">Motor Chatbot/URA</h3>
+              </div>
+              <p className="text-[11px] text-slate-600 mb-2 text-left w-full">
+                <strong>Nível 1:</strong> Menu interativo e escalação. Deflexão de 50-70%.
+              </p>
+              <TagBadge icon={Zap} text="SLA: Resposta < 2s" color="blue" />
+            </NodeCard>
+
+            {/* Nível 2: Portal */}
+            <NodeCard borderColor="border-indigo-300" bg="bg-indigo-50/50">
+              <div className="flex items-center gap-3 mb-2 w-full">
+                <div className="w-5 h-5 shrink-0 bg-[#61DAFB] rounded-full" />
+                <h3 className="font-bold text-slate-800 text-sm text-left">Portal React B2B</h3>
+              </div>
+              <p className="text-[11px] text-slate-600 mb-2 text-left w-full">
+                <strong>Nível 2:</strong> Autoatendimento, boletos, histórico unificado.
+              </p>
+              <TagBadge icon={Zap} text="SLA: Load < 3s" color="indigo" />
+            </NodeCard>
+          </div>
+
+          <Arrow label="API Gateway" />
+
+          {/* COLUNA 3: ORQUESTRAÇÃO & SEGURANÇA (CORE API) */}
+          <div className="flex flex-col justify-center w-full max-w-[280px] lg:w-48 xl:w-56 shrink-0 bg-gradient-to-b from-slate-100/80 to-transparent p-5 rounded-2xl border border-slate-200 relative z-10 shadow-sm">
+             <span className="absolute -top-3 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-6 bg-slate-200 text-slate-800 text-[10px] font-bold px-3 py-1 rounded-full border border-slate-300 uppercase tracking-wider whitespace-nowrap shadow-sm">
+              Orquestração Segura
+            </span>
+            <NodeCard borderColor="border-slate-400">
+              <div className="w-14 h-14 bg-gradient-to-br from-slate-100 to-slate-200 text-slate-700 rounded-full flex items-center justify-center mb-4 border border-slate-300 shadow-sm">
+                <Cpu size={28} />
+              </div>
+              <h3 className="font-bold text-slate-900 text-sm">Microserviços Node</h3>
+              <p className="text-xs text-slate-500 mt-2 mb-4 leading-relaxed">
+                Roteia dados entre Whatsapp, Portal, ERP e Salesforce sem expor os sistemas core.
+              </p>
+              <TagBadge icon={ShieldCheck} text="Rate Limit & JWT" color="emerald" />
+              <TagBadge icon={FileSignature} text="Logs de Auditoria" color="emerald" />
+            </NodeCard>
+          </div>
+
+          <Arrow label="Integração Nativa" />
+
+          {/* COLUNA 4: ECOSSISTEMA INPASA (NÍVEL 3 & DADOS) */}
+          <div className="flex flex-col gap-6 w-full lg:w-auto lg:flex-1 bg-gradient-to-br from-emerald-50/80 to-transparent p-5 xl:p-8 rounded-2xl border-2 border-emerald-200 border-dashed relative z-10 shadow-sm">
+             <span className="absolute -top-3 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-6 bg-emerald-100 text-emerald-800 text-[10px] font-bold px-3 py-1 rounded-full border border-emerald-300 uppercase tracking-wider whitespace-nowrap shadow-sm">
+              Sistemas Core da Inpasa (Intranet)
+            </span>
+
+            <div className="flex flex-col xl:flex-row items-stretch gap-6 h-full mt-2">
+              
+              {/* Salesforce - Nível 3 */}
+              <div className="flex-1 bg-white border-2 border-emerald-400 rounded-xl p-5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-3 opacity-10"><Cloud size={80} /></div>
+                <div>
+                  <div className="flex items-center gap-3 mb-3 border-b border-slate-100 pb-3 relative z-10">
+                    <Cloud className="text-sky-500 bg-sky-50 p-1.5 rounded-lg border border-sky-100" size={32} />
+                    <h3 className="font-bold text-slate-800 text-base">Salesforce Sales Cloud</h3>
+                  </div>
+                  <p className="text-xs text-slate-600 mb-4 leading-relaxed relative z-10">
+                    <strong>Nível 3: Agentes Humanos.</strong> Visão 360 do histórico consolidado (Chatbot + Portal + Tickets). Sem repetição de contexto.
+                  </p>
+                </div>
+                
+                <div className="space-y-2 mt-auto relative z-10">
+                  <TagBadge icon={Headset} text="Resolução Omnichannel" color="emerald" />
+                </div>
+              </div>
+
+              {/* ERP e Dados */}
+              <div className="flex-1 flex flex-col gap-4">
+                
+                {/* ERP Sync */}
+                <div className="bg-slate-900 border-2 border-slate-800 rounded-xl p-4 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all relative text-white text-left w-full">
+                  <div className="flex items-center gap-3 mb-2">
+                    <Server className="text-lime-400 shrink-0" size={20} />
+                    <h3 className="font-bold text-white text-sm">ERP Inpasa (APIs)</h3>
+                  </div>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">Sincronização de pedidos, rastreamento e faturas em tempo real.</p>
+                </div>
+
+                {/* Database Custom */}
+                <NodeCard borderColor="border-emerald-300">
+                  <div className="flex items-center gap-3 mb-2 w-full">
+                    <Database className="text-emerald-600 shrink-0" size={20} />
+                    <h3 className="font-bold text-slate-800 text-sm text-left">PostgreSQL Cache</h3>
+                  </div>
+                  <p className="text-[11px] text-slate-500 mb-2 text-left w-full">Isolamento de dados e cache rápido para garantir respostas em &lt;2s.</p>
+                  <TagBadge icon={Lock} text="Criptografia LGPD" color="emerald" />
+                </NodeCard>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        {/* CAMADA INFERIOR: MONOREPO E ESTEIRA DE DEPLOY SEGURA */}
+        <div className="relative z-10 p-6 md:p-10 lg:p-12 border-t-2 border-slate-100 bg-slate-50/80">
+           <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-200 text-slate-700 text-[10px] font-bold px-4 py-1 rounded-full border border-slate-300 uppercase tracking-wider whitespace-nowrap shadow-sm">
+              Arquitetura de Qualidade & CI/CD (Garantia de 99.5% Uptime)
+            </span>
+            
+            <div className="flex flex-col lg:flex-row gap-6 justify-between items-stretch max-w-5xl mx-auto mt-4">
+              
+              <div className="flex-1 bg-white border-2 border-slate-200 rounded-xl p-5 shadow-sm flex flex-col relative overflow-hidden">
+                <div className="absolute -right-4 -bottom-4 opacity-5"><GitBranch size={80} /></div>
+                <div className="flex items-center gap-3 mb-3">
+                  <GitBranch className="text-slate-600" size={20} />
+                  <h3 className="font-bold text-slate-800 text-sm">Workspace Monorepo</h3>
+                </div>
+                <p className="text-xs text-slate-500 mb-3">Portal, API e Integração Chatbot unificados (Turborepo/Nx).</p>
+                <TagBadge icon={Lock} text="Governança de Código" color="emerald" />
+              </div>
+
+              <div className="hidden lg:flex flex-col items-center justify-center text-slate-400 shrink-0">
+                 <div className="w-8 h-0.5 bg-slate-300 relative">
+                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 border-t-2 border-r-2 border-slate-400 transform rotate-45"></div>
+                 </div>
+              </div>
+
+              <div className="flex-1 bg-white border-2 border-slate-200 rounded-xl p-5 shadow-sm flex flex-col relative overflow-hidden">
+                <div className="absolute -right-4 -bottom-4 opacity-5"><Box size={80} /></div>
+                <div className="flex items-center gap-3 mb-3">
+                  <Box className="text-indigo-500" size={20} />
+                  <h3 className="font-bold text-slate-800 text-sm">Shared Packages</h3>
+                </div>
+                <p className="text-xs text-slate-500 mb-3">Validações DTO comuns ao Portal, Bot e Salesforce.</p>
+                <TagBadge icon={CheckSquare} text="Fonte Única da Verdade" color="emerald" />
+              </div>
+
+              <div className="hidden lg:flex flex-col items-center justify-center text-slate-400 shrink-0">
+                 <div className="w-8 h-0.5 bg-slate-300 relative">
+                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 border-t-2 border-r-2 border-slate-400 transform rotate-45"></div>
+                 </div>
+              </div>
+
+              <div className="flex-1 bg-white border-2 border-slate-200 rounded-xl p-5 shadow-sm flex flex-col relative overflow-hidden">
+                <div className="absolute -right-4 -bottom-4 opacity-5"><ShieldCheck size={80} /></div>
+                <div className="flex items-center gap-3 mb-3">
+                  <ShieldCheck className="text-emerald-500" size={20} />
+                  <h3 className="font-bold text-slate-800 text-sm">Deploy Zero-Downtime</h3>
+                </div>
+                <p className="text-xs text-slate-500 mb-3">Testes E2E automáticos para garantir a métrica de 99.5% uptime.</p>
+                <TagBadge icon={ShieldAlert} text="QA & Testes Estáticos" color="emerald" />
+              </div>
+
+            </div>
+        </div>
+      </div>
   </section>
 );
 
