@@ -297,13 +297,13 @@ const DiagnosticSection: React.FC = () => (
              Transformar atendimento <br/>em autoatendimento.
            </h3>
            <p className="text-base text-slate-600 leading-relaxed mb-6 font-medium">
-             Ao fornecer um ambiente seguro e integrado (Portal + IA), a Inpasa devolve o controle ao cliente. Ele resolve pendências em segundos, enquanto a equipe interna foca apenas nas negociações e exceções de alto valor.
+             Construir um <strong>Ecossistema Integrado</strong> que une Autoatendimento e Inteligência Artificial. A meta é blindar a operação, garantindo <strong>50% a 70% de deflexão</strong> nos chamados e uma redução de custos de no mínimo <strong>40%</strong> no primeiro ano.
            </p>
            
            <div className="flex flex-wrap gap-3 mt-auto">
-              <span className="bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded text-xs font-bold flex items-center gap-2"><Check size={14}/> Acesso 24/7</span>
-              <span className="bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded text-xs font-bold flex items-center gap-2"><Check size={14}/> Resolução Imediata</span>
-              <span className="bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded text-xs font-bold flex items-center gap-2"><Check size={14}/> Redução de Chamados</span>
+              <span className="bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded text-xs font-bold flex items-center gap-2"><Check size={14}/> Deflexão de 70%</span>
+              <span className="bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded text-xs font-bold flex items-center gap-2"><Check size={14}/> SLA &lt; 2s (Chatbot)</span>
+              <span className="bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded text-xs font-bold flex items-center gap-2"><Check size={14}/> Custo -40%</span>
            </div>
         </motion.div>
       </motion.div>
@@ -344,7 +344,7 @@ const SolutionSection: React.FC = () => (
           </div>
 
           <p className="text-slate-600 mb-8 font-medium leading-relaxed">
-            Uma interface moderna e responsiva onde o cliente da Inpasa acessa todo o seu histórico comercial e financeiro sem precisar ligar ou mandar e-mail.
+            Uma interface moderna, 100% nativa e integrada ao <strong>Salesforce Sales Cloud</strong> e ao ERP corporativo, onde o cliente da Inpasa resolve demandas recorrentes num ambiente com alta adoção planejada.
           </p>
 
           <div className="space-y-4 flex-1">
@@ -383,13 +383,13 @@ const SolutionSection: React.FC = () => (
           </div>
 
           <p className="text-slate-300 mb-8 font-medium leading-relaxed relative z-10">
-            Um agente cognitivo que vive dentro do portal. Ele guia o cliente, responde dúvidas instantaneamente e busca dados diretamente no ERP.
+            Um agente cognitivo operando na 1ª linha de defesa, integrado nativamente ao <strong>WhatsApp Business</strong> e ao portal web, com tempo de resposta estrito inferior a 2 segundos.
           </p>
 
           <div className="space-y-4 flex-1 relative z-10">
             {[
-              { t: 'Respostas imediatas a Perguntas Frequentes' },
-              { t: 'Navegação assistida dentro da plataforma' },
+              { t: 'Integração Omnichannel (WhatsApp + Web)' },
+              { t: 'Resoluções transacionais em < 2 segundos' },
               { t: 'Consulta direta à situação financeira/pedidos' },
               { t: 'Transbordo humanizado para equipe Inpasa' }
             ].map((feature, i) => (
@@ -465,11 +465,11 @@ const StrategySection: React.FC = () => (
         <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} className="motion-gpu">
           <SectionTag text="04 // Execução" />
           <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight text-tight">
-            Timeline de 8 a 10 Semanas
+            Fases Acionáveis (Go-Live até 12m)
           </h2>
         </motion.div>
         <p className="text-slate-600 max-w-md text-sm leading-relaxed mt-6 md:mt-0 text-right font-bold">
-          Fase 1 focada na entrega rápida de valor: implantação do portal, IA e integrações essenciais de ERP.
+          Kickoff oficial agendado para <strong className="text-emerald-600">23/02/2026</strong>. Equipe Squad dedicada (6 FTEs) validada para sucesso contínuo do projeto.
         </p>
       </div>
 
@@ -496,6 +496,20 @@ const StrategySection: React.FC = () => (
             <p className="text-sm text-slate-600 leading-relaxed font-bold flex-1">{s.desc}</p>
           </motion.div>
         ))}
+      </div>
+
+      <div className="mt-8 bg-slate-50 border border-slate-200 rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div>
+          <h4 className="font-black text-slate-900 mb-1 tracking-tight">Squad de Alta Performance (6 FTEs)</h4>
+          <p className="text-xs text-slate-600 font-medium">O projeto conta com alocação dedicada de multidisciplinares para garantir o planejamento, integração de arquitetura e mitigação de riscos.</p>
+        </div>
+        <div className="flex flex-wrap gap-2 md:max-w-md md:justify-end">
+          <span className="bg-white border border-slate-200 px-3 py-1 text-[10px] uppercase tracking-widest font-bold text-slate-700 rounded-lg shadow-sm">1x Arquiteto/GP</span>
+          <span className="bg-white border border-slate-200 px-3 py-1 text-[10px] uppercase tracking-widest font-bold text-slate-700 rounded-lg shadow-sm">2x Devs Salesforce</span>
+          <span className="bg-white border border-slate-200 px-3 py-1 text-[10px] uppercase tracking-widest font-bold text-slate-700 rounded-lg shadow-sm">1x Dev IA/Chatbot</span>
+          <span className="bg-white border border-slate-200 px-3 py-1 text-[10px] uppercase tracking-widest font-bold text-slate-700 rounded-lg shadow-sm">1x QA/Testes</span>
+          <span className="bg-white border border-slate-200 px-3 py-1 text-[10px] uppercase tracking-widest font-bold text-slate-700 rounded-lg shadow-sm">1x Business Analyst</span>
+        </div>
       </div>
     </div>
   </section>

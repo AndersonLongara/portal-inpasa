@@ -13,7 +13,12 @@ import {
   CheckCircle2,
   Box,
   GlobeLock,
-  Network
+  Network,
+  Smartphone,
+  Cloud,
+  Headphones,
+  Zap,
+  Gauge
 } from 'lucide-react';
 
 interface SecurityReportProps {
@@ -69,8 +74,82 @@ const SecurityReport: React.FC<SecurityReportProps> = ({ onBack }) => {
             transition={{ delay: 0.1 }}
             className="text-lg md:text-xl text-slate-400 font-medium max-w-2xl leading-relaxed"
           >
-            O Portal Inpasa operará sob a arquitetura de grau militar da AltraHub. Conheça nossas camadas de proteção, isolamento de dados e total conformidade com a LGPD.
+            O Portal Inpasa operará sob a arquitetura de grau militar da AltraHub. Conheça as <strong>3 Linhas de Atendimento Integradas</strong>, o isolamento de dados e nossas fortes garantias de SLA.
           </motion.p>
+        </section>
+
+        {/* Banner de Uptime */}
+        <section className="px-8 md:px-16 max-w-7xl mx-auto mb-32">
+          <div className="bg-gradient-to-r from-emerald-900/40 via-slate-800 to-slate-900 border border-emerald-500/20 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-[0_0_30px_rgba(16,185,129,0.1)]">
+            <div>
+              <h3 className="text-2xl font-black text-white tracking-tight mb-2">Garantia Contratual (SLA)</h3>
+              <p className="text-slate-400 font-medium max-w-lg">A arquitetura AltraHub garante disponibilidade crítica para as operações da Inpasa, com performance garantida via contrato e sustentação assistida.</p>
+            </div>
+            <div className="flex gap-8 shrink-0">
+              <div className="text-center">
+                <p className="text-4xl md:text-5xl font-black text-emerald-400 tracking-tighter drop-shadow-[0_0_15px_rgba(16,185,129,0.4)] block">99.5%</p>
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1 block">Uptime Garantido</span>
+              </div>
+              <div className="w-px bg-slate-700"></div>
+              <div className="text-center tracking-tighter">
+                <p className="text-4xl md:text-5xl font-black text-emerald-400 drop-shadow-[0_0_15px_rgba(16,185,129,0.4)] block">90d</p>
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1 block">Suporte Pós Go-Live</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 3 Linhas de Defesa */}
+        <section className="px-8 md:px-16 max-w-7xl mx-auto mb-32">
+          <div className="mb-12">
+            <span className="text-xs font-bold text-emerald-500 uppercase tracking-widest mb-2 block">Ecossistema Conectado</span>
+            <h2 className="text-3xl font-black text-white tracking-tight">Atendimento em 3 Linhas de Defesa</h2>
+            <p className="text-slate-400 mt-3 max-w-2xl font-medium">Arquitetura desenhada nativamente para deflectir grande volume de chamados através de uma integração contínua entre IA Omnichannel, Portal Salesforce e Agentes Humanos.</p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-slate-800/40 border border-slate-700 p-8 rounded-[2rem] relative overflow-hidden group hover:border-emerald-500/30 transition-all flex flex-col">
+                <div className="flex items-center justify-between mb-6">
+                   <div className="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-400 border border-emerald-500/20">
+                     <Smartphone size={24} />
+                   </div>
+                   <span className="text-[10px] font-black tracking-widest bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full uppercase">1ª Linha</span>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">Chatbot & URA 24/7</h3>
+                <p className="text-sm text-slate-400 leading-relaxed font-medium mb-4 flex-1">Atendimento instantâneo via WhatsApp Business e Web. Resolve 50-70% das rotinas (faturas, pedidos) conectando direto ao ERP Inpasa.</p>
+                <div className="flex items-center gap-2 text-xs font-bold text-slate-500 mt-6 pt-6 border-t border-slate-700/50">
+                  <Zap size={14} className="text-emerald-500" /> Performance SLA: <span className="text-white">&lt; 2s</span>
+                </div>
+             </motion.div>
+
+             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} viewport={{ once: true }} className="bg-slate-800/40 border border-slate-700 p-8 rounded-[2rem] relative overflow-hidden group hover:border-emerald-500/30 transition-all flex flex-col">
+                <div className="flex items-center justify-between mb-6">
+                   <div className="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-400 border border-emerald-500/20">
+                     <Cloud size={24} />
+                   </div>
+                   <span className="text-[10px] font-black tracking-widest bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full uppercase">2ª Linha</span>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">Portal de Autoatendimento</h3>
+                <p className="text-sm text-slate-400 leading-relaxed font-medium mb-4 flex-1">Integração nativa com <strong>Salesforce Sales Cloud</strong>. Soluções complexas em ambiente seguro 100% web, desonerando o backoffice.</p>
+                <div className="flex items-center gap-2 text-xs font-bold text-slate-500 mt-6 pt-6 border-t border-slate-700/50">
+                  <Zap size={14} className="text-emerald-500" /> Performance SLA: <span className="text-white">&lt; 3s</span>
+                </div>
+             </motion.div>
+
+             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} viewport={{ once: true }} className="bg-slate-800/40 border border-slate-700 p-8 rounded-[2rem] relative overflow-hidden group hover:border-emerald-500/30 transition-all flex flex-col">
+                <div className="flex items-center justify-between mb-6">
+                   <div className="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-400 border border-emerald-500/20">
+                     <Headphones size={24} />
+                   </div>
+                   <span className="text-[10px] font-black tracking-widest bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full uppercase">3ª Linha</span>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">Agentes Inpasa</h3>
+                <p className="text-sm text-slate-400 leading-relaxed font-medium mb-4 flex-1">Transbordo humanizado preservando 100% do histórico (sem perda de contexto). Gestão unificada de exceções e reclamações complexas.</p>
+                <div className="flex items-center gap-2 text-xs font-bold text-slate-500 mt-6 pt-6 border-t border-slate-700/50">
+                  <Gauge size={14} className="text-emerald-500" /> CSAT Alvo: <span className="text-white">80% em 90d</span>
+                </div>
+             </motion.div>
+          </div>
         </section>
 
         {/* Sec 1: Arquitetura AI-Native */}
