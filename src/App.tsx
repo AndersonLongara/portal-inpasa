@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { 
+import {
   motion
 } from 'framer-motion';
 import DemoPage from './DemoPage';
 import SecurityReport from './SecurityReport';
-import { 
-  Cpu, 
-  Activity, 
-  Layers, 
+import {
+  Cpu,
+  Activity,
+  Layers,
   CheckCircle2,
   MessageSquare,
   AlertTriangle,
@@ -79,15 +79,15 @@ const App: React.FC = () => {
 
   return (
     <div className="bg-slate-50 text-slate-900 overflow-hidden font-sans antialiased selection:bg-emerald-600/20 relative h-screen">
-      
-      <TopNavigation 
-        activeSection={activeSection} 
-        onNavClick={scrollToSection} 
+
+      <TopNavigation
+        activeSection={activeSection}
+        onNavClick={scrollToSection}
         onDemoClick={() => setCurrentView('demo')}
         onSecurityClick={() => setCurrentView('security')}
       />
 
-      <main 
+      <main
         ref={containerRef}
         className="h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth custom-scrollbar relative z-10"
         onScroll={(e) => {
@@ -116,7 +116,7 @@ interface SectionTagProps {
 }
 
 const SectionTag: React.FC<SectionTagProps> = ({ text }) => (
-  <motion.div 
+  <motion.div
     initial={{ opacity: 0, x: -10 }}
     whileInView={{ opacity: 1, x: 0 }}
     className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-slate-200 rounded shadow-sm text-slate-600 text-[10px] font-bold tracking-widest uppercase mb-3 motion-gpu"
@@ -143,36 +143,35 @@ const TopNavigation: React.FC<TopNavigationProps> = ({ activeSection, onNavClick
   return (
     <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-xl border-b border-slate-200 z-50 h-16 flex items-center justify-between px-8 shadow-sm transition-all">
       <div className="flex items-center gap-4 group cursor-pointer" onClick={() => onNavClick(0)}>
-        <motion.img 
+        <motion.img
           src="https://www.inpasa.com.br/wp-content/uploads/2023/05/logo-inpasa.png"
           alt="Inpasa"
           className="h-8 w-auto object-contain object-left transition-all motion-gpu"
           onError={(e) => {
-             const target = e.target as HTMLImageElement;
-             target.style.display = 'none';
-             if (target.nextElementSibling) {
-               (target.nextElementSibling as HTMLElement).style.display = 'flex';
-             }
+            const target = e.target as HTMLImageElement;
+            target.style.display = 'none';
+            if (target.nextElementSibling) {
+              (target.nextElementSibling as HTMLElement).style.display = 'flex';
+            }
           }}
         />
         <div className="hidden items-center gap-2">
-           <LayoutDashboard className="text-emerald-600" size={24} strokeWidth={2.5} />
-           <span className="text-xl font-black tracking-tighter text-slate-900">Inpasa</span>
+          <LayoutDashboard className="text-emerald-600" size={24} strokeWidth={2.5} />
+          <span className="text-xl font-black tracking-tighter text-slate-900">Inpasa</span>
         </div>
         <div className="flex flex-col border-l border-slate-300 pl-4">
           <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest leading-none">AltraHub</span>
           <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest leading-none mt-1">Proposal</span>
         </div>
       </div>
-      
+
       <div className="hidden md:flex items-center gap-6">
         {sections.map((name, i) => (
           <button
             key={i}
             onClick={() => onNavClick(i)}
-            className={`text-[11px] font-bold uppercase tracking-wider transition-all relative py-1 hover:text-slate-900 ${
-              activeSection === i ? 'text-emerald-600' : 'text-slate-400'
-            }`}
+            className={`text-[11px] font-bold uppercase tracking-wider transition-all relative py-1 hover:text-slate-900 ${activeSection === i ? 'text-emerald-600' : 'text-slate-400'
+              }`}
           >
             {name}
             {activeSection === i && (
@@ -183,19 +182,19 @@ const TopNavigation: React.FC<TopNavigationProps> = ({ activeSection, onNavClick
       </div>
 
       <div className="flex items-center gap-4">
-        <button 
+        <button
           onClick={onSecurityClick}
           className="hidden md:flex text-slate-500 hover:text-emerald-600 px-4 py-2 text-[10px] font-bold uppercase tracking-widest transition-colors flex items-center gap-1.5"
         >
-          <ShieldCheck size={14}/> Segurança & LGPD
+          <ShieldCheck size={14} /> Segurança & LGPD
         </button>
-        <button 
+        <button
           onClick={onDemoClick}
           className="hidden md:flex bg-emerald-50 text-emerald-700 px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest border border-emerald-200 hover:bg-emerald-100 transition-all active:scale-95"
         >
           Visualizar Demo Portal
         </button>
-        <motion.button 
+        <motion.button
           onClick={() => onNavClick(5)}
           whileHover={{ scale: 1.05 }}
           className="flex items-center gap-2 text-xs text-white font-bold bg-emerald-600 px-4 py-2 rounded-full shadow-md hover:bg-emerald-700 transition-colors motion-gpu"
@@ -214,24 +213,24 @@ interface HeroSectionProps {
 const HeroSection: React.FC<HeroSectionProps> = ({ onExplore }) => (
   <section className="h-screen w-full snap-start flex flex-col md:flex-row items-center bg-white relative overflow-hidden pt-16">
     <div className="flex-1 px-12 md:px-24 py-12 flex flex-col justify-center relative z-10 h-full">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="max-w-2xl motion-gpu"
       >
         <SectionTag text="Transformação Digital // Março 2026" />
-        
+
         <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-6 text-tight mt-4">
           PORTAL INTELIGENTE DE <br />
           <span className="text-emerald-600">ATENDIMENTO AO CLIENTE</span>
         </h1>
-        
+
         <p className="text-xl text-slate-600 font-normal leading-relaxed mb-10 border-l-4 border-emerald-600 pl-6">
           Projeto executivo para a Transformação B2B/B2C da Inpasa. Um ecossistema digital que centraliza autoatendimento, guiado por um <strong>Assistente Virtual Integrado</strong> ao Salesforce e ERP corporativo.
         </p>
 
-        <motion.button 
+        <motion.button
           onClick={onExplore}
           whileHover={{ scale: 1.05, x: 5 }}
           whileTap={{ scale: 0.98 }}
@@ -245,13 +244,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onExplore }) => (
 
     <div className="flex-1 h-full relative hidden md:block">
       <div className="absolute inset-0 bg-gradient-to-l from-transparent via-white/20 to-white z-20" />
-      <motion.img 
+      <motion.img
         initial={{ scale: 1.1, opacity: 0 }}
         animate={{ scale: 1, opacity: 0.95 }}
         transition={{ duration: 1.5 }}
-        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop" 
-        className="w-full h-full object-cover object-center grayscale-[20%]" 
-        alt="Portal de Dados" 
+        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop"
+        className="w-full h-full object-cover object-center grayscale-[20%]"
+        alt="Portal de Dados"
       />
       <div className="absolute inset-0 bg-emerald-900/10 mix-blend-multiply z-10" />
     </div>
@@ -261,7 +260,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onExplore }) => (
 const DiagnosticSection: React.FC = () => (
   <section className="h-screen w-full snap-start flex flex-col justify-center bg-slate-50 px-12 md:px-24 pt-16">
     <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center w-full">
-      <motion.div 
+      <motion.div
         initial={{ x: -30, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
@@ -269,20 +268,20 @@ const DiagnosticSection: React.FC = () => (
       >
         <SectionTag text="01 // O Desafio Atual" />
         <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight mb-6 text-tight">
-          O custo invisível da <br/><span className="text-rose-600">dependência manual.</span>
+          O custo invisível da <br /><span className="text-rose-600">dependência manual.</span>
         </h2>
         <p className="text-lg text-slate-600 leading-relaxed mb-8 font-medium opacity-90">
           Hoje, a Inpasa lida com um volume mensal de <strong>1.400 a 2.000 chamados</strong>. Este atendimento multicanal sem Portal ou URA inteligente sobrecarrega a equipe, impedindo o escalonamento das vendas e elevando o custo operacional.
         </p>
-        
+
         <div className="space-y-4">
           {[
             { t: 'Sobrecarga da equipe com solicitações básicas', s: 'DESPERDÍCIO DE TEMPO' },
             { t: 'Informações financeiras e comerciais descentralizadas', s: 'FRICÇÃO' },
             { t: 'Dependência do horário comercial para resolução', s: 'ATRASO' }
           ].map((item, i) => (
-            <motion.div 
-              key={i} 
+            <motion.div
+              key={i}
               whileHover={{ x: 10, backgroundColor: '#fff' }}
               transition={springTransition}
               className="flex items-center justify-between p-4 bg-white/50 border border-slate-200 rounded-lg shadow-sm cursor-default motion-gpu"
@@ -297,29 +296,29 @@ const DiagnosticSection: React.FC = () => (
         </div>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         initial={{ x: 30, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
         className="grid grid-cols-1 gap-6 motion-gpu"
       >
-        <motion.div 
+        <motion.div
           whileHover={{ y: -5, boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)' }}
           className="p-8 bg-white border-t-4 border-emerald-600 rounded-xl shadow-md transition-all h-full flex flex-col justify-center"
         >
-           <p className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-4">A Virada de Chave</p>
-           <h3 className="text-3xl font-black text-slate-900 mb-4 leading-tight">
-             Transformar atendimento <br/>em autoatendimento.
-           </h3>
-           <p className="text-base text-slate-600 leading-relaxed mb-6 font-medium">
-             Construir um <strong>Ecossistema Integrado</strong> que une Autoatendimento e Inteligência Artificial. A meta é blindar a operação, garantindo <strong>50% a 70% de deflexão</strong> nos chamados e uma redução de custos de no mínimo <strong>40%</strong> no primeiro ano.
-           </p>
-           
-           <div className="flex flex-wrap gap-3 mt-auto">
-              <span className="bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded text-xs font-bold flex items-center gap-2"><Check size={14}/> Deflexão de 70%</span>
-              <span className="bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded text-xs font-bold flex items-center gap-2"><Check size={14}/> SLA &lt; 2s (Chatbot)</span>
-              <span className="bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded text-xs font-bold flex items-center gap-2"><Check size={14}/> Custo -40%</span>
-           </div>
+          <p className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-4">A Virada de Chave</p>
+          <h3 className="text-3xl font-black text-slate-900 mb-4 leading-tight">
+            Transformar atendimento <br />em autoatendimento.
+          </h3>
+          <p className="text-base text-slate-600 leading-relaxed mb-6 font-medium">
+            Construir um <strong>Ecossistema Integrado</strong> que une Autoatendimento e Inteligência Artificial. A meta é blindar a operação, garantindo <strong>50% a 70% de deflexão</strong> nos chamados e uma redução de custos de no mínimo <strong>40%</strong> no primeiro ano.
+          </p>
+
+          <div className="flex flex-wrap gap-3 mt-auto">
+            <span className="bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded text-xs font-bold flex items-center gap-2"><Check size={14} /> Deflexão de 70%</span>
+            <span className="bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded text-xs font-bold flex items-center gap-2"><Check size={14} /> SLA &lt; 2s (Chatbot)</span>
+            <span className="bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded text-xs font-bold flex items-center gap-2"><Check size={14} /> Custo -40%</span>
+          </div>
         </motion.div>
       </motion.div>
     </div>
@@ -335,14 +334,14 @@ const SolutionSection: React.FC = () => (
           Os 2 Pilares do Novo Atendimento
         </h2>
         <p className="text-slate-500 font-bold text-sm">
-           Uma plataforma dupla desenhada para escalabilidade comercial.
+          Uma plataforma dupla desenhada para escalabilidade comercial.
         </p>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-8 h-full min-h-0">
-        
+
         {/* Pilar 1 */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           whileHover={{ y: -5 }}
@@ -364,10 +363,10 @@ const SolutionSection: React.FC = () => (
 
           <div className="space-y-4 flex-1">
             {[
-              { i: <CreditCard size={18}/>, t: 'Consulta de Faturas e Boletos' },
-              { i: <FileText size={18}/>, t: 'Visualização de Pedidos em Tempo Real' },
-              { i: <DownloadCloud size={18}/>, t: 'Download de Documentos' },
-              { i: <MessageSquare size={18}/>, t: 'Abertura de Chamados via Chat' }
+              { i: <CreditCard size={18} />, t: 'Consulta de Faturas e Boletos' },
+              { i: <FileText size={18} />, t: 'Visualização de Pedidos em Tempo Real' },
+              { i: <DownloadCloud size={18} />, t: 'Download de Documentos' },
+              { i: <MessageSquare size={18} />, t: 'Abertura de Chamados via Chat' }
             ].map((feature, i) => (
               <div key={i} className="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-100 shadow-sm">
                 <div className="text-emerald-600">{feature.i}</div>
@@ -378,7 +377,7 @@ const SolutionSection: React.FC = () => (
         </motion.div>
 
         {/* Pilar 2 */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
@@ -386,7 +385,7 @@ const SolutionSection: React.FC = () => (
           className="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl transition-all flex flex-col relative overflow-hidden"
         >
           <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-600/20 blur-[80px] rounded-full pointer-events-none" />
-          
+
           <div className="flex items-center gap-4 mb-8 relative z-10">
             <div className="w-14 h-14 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-2xl flex items-center justify-center">
               <Bot size={28} />
@@ -439,7 +438,7 @@ const Arrow = ({ label }: { label?: string }) => (
 );
 
 // Componente de Badge de Segurança/SLA (Tags)
-const TagBadge = ({ icon: Icon, text, color = "emerald" }: { icon: any, text: string, color?: "emerald"|"blue"|"indigo" }) => {
+const TagBadge = ({ icon: Icon, text, color = "emerald" }: { icon: any, text: string, color?: "emerald" | "blue" | "indigo" }) => {
   const colorClasses = {
     emerald: "text-emerald-500 bg-white/80 border-emerald-200/50",
     blue: "text-blue-500 bg-blue-50 border-blue-200",
@@ -455,26 +454,26 @@ const TagBadge = ({ icon: Icon, text, color = "emerald" }: { icon: any, text: st
 };
 
 const TechIcon = ({ src, alt, size = 16, className = "" }: { src: string, alt: string, size?: number, className?: string }) => (
-  <img 
-    src={src} 
-    alt={alt} 
-    width={size} 
-    height={size} 
+  <img
+    src={src}
+    alt={alt}
+    width={size}
+    height={size}
     className={`inline-block grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100 ${className}`}
   />
 );
 
 const GraphQLIcon = ({ size = 16, className = "" }: { size?: number, className?: string }) => (
-  <svg 
-    role="img" 
-    viewBox="0 0 24 24" 
+  <svg
+    role="img"
+    viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
     className={`inline-block grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100 fill-current ${className}`}
   >
     <title>GraphQL</title>
-    <path d="M12.002 0a2.138 2.138 0 1 0 0 4.277 2.138 2.138 0 1 0 0-4.277zm8.54 4.931a2.138 2.138 0 1 0 0 4.277 2.138 2.138 0 1 0 0-4.277zm0 9.862a2.138 2.138 0 1 0 0 4.277 2.138 2.138 0 1 0 0-4.277zm-8.54 4.931a2.138 2.138 0 1 0 0 4.276 2.138 2.138 0 1 0 0-4.276zm-8.542-4.93a2.138 2.138 0 1 0 0 4.276 2.138 2.138 0 1 0 0-4.277zm0-9.863a2.138 2.138 0 1 0 0 4.277 2.138 2.138 0 1 0 0-4.277zm8.542-3.378L2.953 6.777v10.448l9.049 5.224 9.047-5.224V6.777zm0 1.601 7.66 13.27H4.34zm-1.387.371L3.97 15.037V7.363zm2.774 0 6.646 3.838v7.674zM5.355 17.44h13.293l-6.646 3.836z"/>
+    <path d="M12.002 0a2.138 2.138 0 1 0 0 4.277 2.138 2.138 0 1 0 0-4.277zm8.54 4.931a2.138 2.138 0 1 0 0 4.277 2.138 2.138 0 1 0 0-4.277zm0 9.862a2.138 2.138 0 1 0 0 4.277 2.138 2.138 0 1 0 0-4.277zm-8.54 4.931a2.138 2.138 0 1 0 0 4.276 2.138 2.138 0 1 0 0-4.276zm-8.542-4.93a2.138 2.138 0 1 0 0 4.276 2.138 2.138 0 1 0 0-4.277zm0-9.863a2.138 2.138 0 1 0 0 4.277 2.138 2.138 0 1 0 0-4.277zm8.542-3.378L2.953 6.777v10.448l9.049 5.224 9.047-5.224V6.777zm0 1.601 7.66 13.27H4.34zm-1.387.371L3.97 15.037V7.363zm2.774 0 6.646 3.838v7.674zM5.355 17.44h13.293l-6.646 3.836z" />
   </svg>
 );
 
@@ -490,437 +489,437 @@ const NodeCard = ({ children, borderColor = "border-slate-200", bg = "bg-white",
 );
 
 const ArchitectureSection: React.FC = () => (
-   <section className="min-h-screen w-full snap-start flex flex-col items-center justify-center bg-slate-50/50 pb-16 pt-24 px-4 sm:px-8 text-slate-800 relative xl:scale-[0.85] origin-top">
-      {/* Cabeçalho do Diagrama */}
-      <div className="w-full max-w-[1880px] mb-8 flex flex-col md:flex-row items-start md:items-center justify-between bg-white p-6 rounded-2xl border border-slate-200 shadow-sm gap-4">
-        <div>
-          <h1 className="text-2xl font-extrabold text-slate-900 flex items-center gap-3 tracking-tight">
-            <Network className="text-emerald-600" size={28} />
-            03 // Ecossistema Integrado de Atendimento
-          </h1>
-          <p className="text-slate-500 text-sm mt-1 font-medium">
-            Arquitetura para dezenas de clientes focada em SLAs rigorosos (Uptime 99.5%) e deflexão via IA.
-          </p>
-        </div>
-        
-        {/* Legenda de Níveis de Atendimento */}
-        <div className="flex flex-wrap gap-3 md:gap-5 text-xs font-semibold text-slate-600 bg-slate-50 p-3 rounded-xl border border-slate-100">
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-blue-100 border border-blue-400 shadow-inner"></div>
-            Nível 1 (Chatbot)
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-indigo-100 border border-indigo-400 shadow-inner"></div>
-            Nível 2 (Portal)
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-emerald-100 border border-emerald-400 shadow-inner"></div>
-            Nível 3 (Agentes Humanos)
-          </div>
-        </div>
-      </div>
-
-      {/* CANVAS DO DIAGRAMA */}
-      <div className="w-full max-w-[1880px] bg-white rounded-3xl border border-slate-200 shadow-xl relative">
-        
-        <div className="absolute inset-0 z-0 opacity-40 pointer-events-none bg-[radial-gradient(#cbd5e1_1.5px,transparent_1.5px)] [background-size:24px_24px]"></div>
-
-        <div className="relative z-10 p-8 md:p-12 lg:p-14 flex flex-col lg:flex-row items-center lg:items-stretch justify-center gap-0">
-
-          {/* COLUNA 1: CANAIS DE ENTRADA */}
-          <div className="flex flex-col justify-center gap-6 w-full max-w-[280px] lg:w-48 xl:w-56 shrink-0 z-10">
-            <NodeCard borderColor="border-slate-300" logo={<TechIcon src="https://cdn.simpleicons.org/whatsapp/25D366" alt="WhatsApp" size={40} />}>
-              <div className="w-12 h-12 bg-gradient-to-br from-green-50 to-green-100 text-green-600 rounded-full flex items-center justify-center mb-3 shadow-sm border border-green-200">
-                <MessageSquare size={24} />
-              </div>
-              <h3 className="font-bold text-slate-800 text-sm">WhatsApp Business</h3>
-              <p className="text-xs text-slate-500 mt-1 mb-2">Canal Instantâneo</p>
-              <TagBadge icon={Smartphone} text="Acesso Mobile" color="emerald" />
-            </NodeCard>
-
-            <NodeCard borderColor="border-slate-300">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-50 to-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-3 shadow-sm border border-blue-200">
-                <Globe size={24} />
-              </div>
-              <h3 className="font-bold text-slate-800 text-sm">Web / Browser</h3>
-              <div className="flex gap-2 mb-2">
-                <TechIcon src="https://cdn.simpleicons.org/react/61DAFB" alt="React" size={14} />
-                <TechIcon src="https://cdn.simpleicons.org/tailwindcss/06B6D4" alt="Tailwind" size={14} />
-                <TechIcon src="https://cdn.simpleicons.org/typescript/3178C6" alt="TS" size={14} />
-              </div>
-              <p className="text-xs text-slate-500 mt-1 mb-2 font-medium">Ecossistema Moderno</p>
-              <TagBadge icon={Users} text="Autenticação Segura" color="emerald" />
-            </NodeCard>
-          </div>
-
-          <Arrow label="Mensageria" />
-
-          {/* COLUNA 2: CAMADA DE INGESTÃO & FILAS */}
-          <div className="flex flex-col justify-center gap-6 w-full max-w-[280px] lg:w-48 xl:w-56 shrink-0 z-10">
-            <NodeCard borderColor="border-orange-300" bg="bg-orange-50/30" logo={<TechIcon src="https://cdn.simpleicons.org/rabbitmq/FF6600" alt="RabbitMQ" size={32} />}>
-               <div className="w-12 h-12 bg-gradient-to-br from-orange-50 to-orange-100 text-orange-600 rounded-full flex items-center justify-center mb-3 shadow-sm border border-orange-200">
-                <Network size={24} />
-              </div>
-              <h3 className="font-bold text-slate-800 text-sm">Ingestão & Filas</h3>
-              <p className="text-[10px] text-slate-500 mt-1 mb-2 font-medium">Asincronismo & Resiliência</p>
-              <div className="flex gap-2 mb-2">
-                 <TechIcon src="https://cdn.simpleicons.org/apachekafka/231F20" alt="Kafka" size={14} />
-                 <TechIcon src="https://cdn.simpleicons.org/redis/DC382D" alt="Redis Streams" size={14} />
-              </div>
-              <TagBadge icon={CheckCircle2} text="ACK 200 Instantâneo" color="emerald" />
-            </NodeCard>
-          </div>
-
-          <Arrow label="Workers" />
-
-          {/* COLUNA 2: ATENDIMENTO NÍVEL 1 & 2 (BORDA/FRONTEND) */}
-          <div className="flex flex-col gap-6 w-full max-w-[280px] lg:w-56 xl:w-64 shrink-0 bg-gradient-to-b from-slate-50 to-transparent p-5 rounded-2xl border border-slate-200 relative z-10 shadow-sm">
-            <span className="absolute -top-3 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-6 bg-slate-100 text-slate-700 text-[10px] font-bold px-3 py-1 rounded-full border border-slate-300 uppercase tracking-wider whitespace-nowrap shadow-sm">
-              DMZ & Borda Pública
-            </span>
-
-            {/* WAF */}
-            <NodeCard borderColor="border-slate-300" logo={<TechIcon src="https://cdn.simpleicons.org/cloudflare/F38020" alt="Cloudflare" size={40} />}>
-              <div className="flex items-center gap-3 mb-2 w-full">
-                <Shield className="text-slate-600 shrink-0" size={20} />
-                <h3 className="font-bold text-slate-800 text-sm text-left">Cloudflare WAF</h3>
-              </div>
-              <p className="text-xs text-slate-500 mb-2 text-left w-full">Segurança de Borda e Mitigação DDoS.</p>
-            </NodeCard>
-
-            <div className="flex justify-center my-[-16px] relative z-10 text-slate-400">
-              <div className="w-0.5 h-8 bg-slate-300"></div>
-            </div>
-
-            {/* Nível 1: Chatbot */}
-            <NodeCard borderColor="border-blue-300" bg="bg-blue-50/50">
-              <div className="flex items-center gap-3 mb-2 w-full">
-                <Bot className="text-blue-600 shrink-0" size={20} />
-                <h3 className="font-bold text-slate-800 text-sm text-left">Motor Chatbot/URA</h3>
-              </div>
-              <p className="text-[11px] text-slate-600 mb-2 text-left w-full">
-                <strong>Nível 1:</strong> Menu interativo e escalação. Deflexão de 50-70%.
-              </p>
-              <TagBadge icon={Zap} text="SLA: Resposta < 2s" color="blue" />
-            </NodeCard>
-
-            {/* Nível 2: Portal */}
-            <NodeCard borderColor="border-indigo-300" bg="bg-indigo-50/50">
-              <div className="flex items-center gap-3 mb-2 w-full">
-                <div className="w-5 h-5 shrink-0 bg-[#61DAFB] rounded-full" />
-                <h3 className="font-bold text-slate-800 text-sm text-left">Portal React B2B</h3>
-              </div>
-              <p className="text-[11px] text-slate-600 mb-2 text-left w-full">
-                <strong>Nível 2:</strong> Autoatendimento, boletos, histórico unificado.
-              </p>
-              <TagBadge icon={Zap} text="SLA: Load < 3s" color="indigo" />
-            </NodeCard>
-          </div>
-
-          <Arrow label="API Gateway" />
-
-          {/* COLUNA 3: ORQUESTRAÇÃO & SEGURANÇA (CORE API) */}
-          <div className="flex flex-col justify-center w-full max-w-[280px] lg:w-48 xl:w-56 shrink-0 bg-gradient-to-b from-slate-100/80 to-transparent p-5 rounded-2xl border border-slate-200 relative z-10 shadow-sm">
-             <span className="absolute -top-3 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-6 bg-slate-200 text-slate-800 text-[10px] font-bold px-3 py-1 rounded-full border border-slate-300 uppercase tracking-wider whitespace-nowrap shadow-sm">
-              Orquestração Segura
-            </span>
-            <NodeCard borderColor="border-slate-400" logo={<TechIcon src="https://cdn.simpleicons.org/nodedotjs/339933" alt="Node" size={40} />}>
-              <div className="w-14 h-14 bg-gradient-to-br from-slate-100 to-slate-200 text-slate-700 rounded-full flex items-center justify-center mb-4 border border-slate-300 shadow-sm">
-                <Cpu size={28} />
-              </div>
-              <h3 className="font-bold text-slate-900 text-sm">Microsserviços Node</h3>
-              <div className="flex gap-2 mb-3">
-                 <TechIcon src="https://cdn.simpleicons.org/nestjs/E0234E" alt="NestJS" size={12} />
-                 <TechIcon src="https://cdn.simpleicons.org/auth0/EB5424" alt="Auth0" size={12} />
-                 <TechIcon src="https://cdn.simpleicons.org/prisma/2D3748" alt="Prisma" size={12} />
-              </div>
-              <p className="text-xs text-slate-500 mt-1 mb-4 leading-relaxed">
-                Consome filas e orquestra fluxos entre AI, ERP e Salesforce.
-              </p>
-              <TagBadge icon={ShieldCheck} text="Rate Limit & JWT" color="emerald" />
-            </NodeCard>
-
-            <div className="flex justify-center my-[-12px] relative z-10 text-slate-400">
-              <div className="w-0.5 h-6 bg-slate-300 border-x border-white"></div>
-            </div>
-
-            {/* Motor de IA Cognitiva */}
-            <NodeCard borderColor="border-blue-400" bg="bg-blue-50/30" logo={<TechIcon src="https://cdn.simpleicons.org/langchain/1C3C3C" alt="LangChain" size={32} />}>
-               <div className="flex items-center gap-3 mb-2 w-full">
-                <Brain className="text-blue-600 shrink-0" size={20} />
-                <h3 className="font-bold text-slate-900 text-sm italic">Motor de IA Cognitiva</h3>
-              </div>
-              <div className="flex gap-2 mb-2 w-full overflow-x-hidden">
-                 <TechIcon src="https://cdn.simpleicons.org/openai/000000" alt="OpenAI" size={12} />
-                 <TechIcon src="https://cdn.simpleicons.org/anthropic/D1D5DB" alt="Anthropic" size={12} />
-                 <TechIcon src="https://cdn.simpleicons.org/neo4j/008CC1" alt="Neo4j" size={12} />
-                 <TechIcon src="https://cdn.simpleicons.org/supabase/3ECF8E" alt="pgvector" size={12} />
-              </div>
-              <p className="text-[10px] text-slate-600 text-left leading-tight mb-2">
-                Workflows Multi-Agentes com <strong>GraphRAG</strong> (Memória Corporativa).
-              </p>
-              <TagBadge icon={Activity} text="Cognição em Tempo Real" color="blue" />
-            </NodeCard>
-          </div>
-
-          <Arrow label="Integração Nativa" />
-
-          {/* COLUNA 4: ECOSSISTEMA INPASA (NÍVEL 3 & DADOS) */}
-          <div className="flex flex-col gap-6 w-full lg:w-auto lg:flex-1 bg-gradient-to-br from-emerald-50/80 to-transparent p-5 xl:p-8 rounded-2xl border-2 border-emerald-200 border-dashed relative z-10 shadow-sm">
-             <span className="absolute -top-3 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-6 bg-emerald-100 text-emerald-800 text-[10px] font-bold px-3 py-1 rounded-full border border-emerald-300 uppercase tracking-wider whitespace-nowrap shadow-sm">
-              Sistemas Core da Inpasa (Intranet)
-            </span>
-
-            <div className="flex flex-col xl:flex-row items-stretch gap-6 h-full mt-2">
-              
-              {/* Salesforce - Nível 3 */}
-              <div className="flex-1 bg-white border-2 border-emerald-400 rounded-xl p-5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-3 opacity-10"><Cloud size={80} /></div>
-                <div>
-                  <div className="flex items-center gap-3 mb-3 border-b border-slate-100 pb-3 relative z-10">
-                    <Cloud className="text-sky-500 bg-sky-50 p-1.5 rounded-lg border border-sky-100" size={32} />
-                    <h3 className="font-bold text-slate-800 text-base">Salesforce Sales Cloud</h3>
-                  </div>
-                  <p className="text-xs text-slate-600 mb-4 leading-relaxed relative z-10">
-                    <strong>Nível 3: Agentes Humanos.</strong> Visão 360 do histórico consolidado (Chatbot + Portal + Tickets). Sem repetição de contexto.
-                  </p>
-                </div>
-                
-                <div className="space-y-2 mt-auto relative z-10">
-                  <TagBadge icon={Headset} text="Resolução Omnichannel" color="emerald" />
-                </div>
-              </div>
-
-              {/* ERP e Dados */}
-              <div className="flex-1 flex flex-col gap-4">
-                
-                {/* ERP Sync */}
-                <div className="bg-slate-900 border-2 border-slate-800 rounded-xl p-4 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all relative text-white text-left w-full overflow-hidden">
-                   <div className="absolute top-2 right-2 opacity-20">
-                    <TechIcon src="https://cdn.simpleicons.org/vercel/FFFFFF" alt="Vercel" size={24} className="grayscale-0" />
-                  </div>
-                  <div className="flex items-center gap-3 mb-2">
-                    <Server className="text-lime-400 shrink-0" size={20} />
-                    <h3 className="font-bold text-white text-sm">Hospedagem Vercel</h3>
-                  </div>
-                  <p className="text-[11px] text-slate-400 leading-relaxed">Performance Global e Segurança de Borda (Premium SDK).</p>
-                </div>
-
-                {/* Database Custom */}
-                <NodeCard borderColor="border-emerald-300" logo={<TechIcon src="https://cdn.simpleicons.org/postgresql/4169E1" alt="Postgres" size={32} />}>
-                  <div className="flex items-center gap-3 mb-2 w-full">
-                    <Database className="text-emerald-600 shrink-0" size={20} />
-                    <h3 className="font-bold text-slate-800 text-sm text-left">PostgreSQL & Redis</h3>
-                  </div>
-                  <p className="text-[11px] text-slate-500 mb-2 text-left w-full">Cache ultra rápido para garantir respostas em &lt;2s.</p>
-                  <TagBadge icon={Lock} text="Criptografia LGPD" color="emerald" />
-                </NodeCard>
-
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-
-        {/* CAMADA INFERIOR: MONOREPO E ESTEIRA DE DEPLOY SEGURA */}
-        <div className="relative z-10 p-6 md:p-10 lg:p-12 border-t-2 border-slate-100 bg-slate-50/80">
-           <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-200 text-slate-700 text-[10px] font-bold px-4 py-1 rounded-full border border-slate-300 uppercase tracking-wider whitespace-nowrap shadow-sm">
-              Arquitetura de Qualidade & CI/CD (Garantia de 99.5% Uptime)
-            </span>
-            
-            <div className="flex flex-col lg:flex-row gap-6 justify-between items-stretch max-w-6xl mx-auto mt-4">
-              
-              <div className="flex-1 bg-white border-2 border-slate-200 rounded-xl p-5 shadow-sm flex flex-col relative overflow-hidden">
-                <div className="absolute -right-4 -bottom-4 opacity-5"><GitBranch size={80} /></div>
-                <div className="absolute top-2 right-2 opacity-20">
-                  <TechIcon src="https://cdn.simpleicons.org/turborepo/EF4444" alt="Turborepo" size={24} className="grayscale-0" />
-                </div>
-                <div className="flex items-center gap-3 mb-3">
-                  <GitBranch className="text-slate-600" size={20} />
-                  <h3 className="font-bold text-slate-800 text-sm">Workspace Monorepo</h3>
-                </div>
-                <p className="text-xs text-slate-500 mb-3 leading-relaxed">Portal, API e Integração Chatbot unificados (Turbo/Nx).</p>
-                <TagBadge icon={Lock} text="Governança de Código" color="emerald" />
-              </div>
-
-              <div className="hidden lg:flex flex-col items-center justify-center text-slate-400 shrink-0">
-                 <div className="w-8 h-0.5 bg-slate-300 relative">
-                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 border-t-2 border-r-2 border-slate-400 transform rotate-45"></div>
-                 </div>
-              </div>
-
-              <div className="flex-1 bg-white border-2 border-slate-200 rounded-xl p-5 shadow-sm flex flex-col relative overflow-hidden">
-                <div className="absolute -right-4 -bottom-4 opacity-5"><Box size={80} /></div>
-                <div className="absolute top-2 right-2 opacity-20">
-                  <TechIcon src="https://cdn.simpleicons.org/github/181717" alt="GitHub" size={24} className="grayscale-0" />
-                </div>
-                <div className="flex items-center gap-3 mb-3">
-                  <Box className="text-indigo-500" size={20} />
-                  <h3 className="font-bold text-slate-800 text-sm">CI/CD & Shared Packages</h3>
-                </div>
-                <p className="text-xs text-slate-500 mb-3 leading-relaxed">GitHub Actions com scans de segurança e DTOs unificados.</p>
-                <TagBadge icon={CheckSquare} text="Fonte Única da Verdade" color="emerald" />
-              </div>
-
-              <div className="hidden lg:flex flex-col items-center justify-center text-slate-400 shrink-0">
-                 <div className="w-8 h-0.5 bg-slate-300 relative">
-                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 border-t-2 border-r-2 border-slate-400 transform rotate-45"></div>
-                 </div>
-              </div>
-
-              <div className="flex-1 bg-white border-2 border-slate-200 rounded-xl p-5 shadow-sm flex flex-col relative overflow-hidden">
-                <div className="absolute -right-4 -bottom-4 opacity-5"><ShieldCheck size={80} /></div>
-                <div className="absolute top-2 right-2 opacity-20">
-                  <TechIcon src="https://cdn.simpleicons.org/sentry/362D59" alt="Sentry" size={24} className="grayscale-0" />
-                </div>
-                <div className="flex items-center gap-3 mb-3">
-                  <ShieldCheck className="text-emerald-500" size={20} />
-                  <h3 className="font-bold text-slate-800 text-sm">Monitoramento & Deploy</h3>
-                </div>
-                <p className="text-xs text-slate-500 mb-3 leading-relaxed">Rastreabilidade 24/7 com Sentry e Deploy Zero-Downtime.</p>
-                <TagBadge icon={ShieldAlert} text="QA & Testes Estáticos" color="emerald" />
-              </div>
-
-            </div>
-        </div>
-      </div>
-  </section>
-);
-const GovernanceSection: React.FC = () => (
-   <section className="min-h-screen w-full snap-start flex flex-col items-center justify-center bg-white pb-16 pt-24 px-8 text-slate-800 relative xl:scale-[0.9] origin-top">
-      <div className="w-full max-w-7xl mb-10 text-center">
-        <SectionTag text="Governança & Garantias" />
-        <h2 className="text-4xl font-extrabold text-slate-900 tracking-tight mt-2">
-          Escopo da Implantação Inicial
-        </h2>
-        <p className="text-slate-500 max-w-2xl mx-auto mt-4 text-lg italic">
-          As funcionalidades descritas referem-se à primeira fase do portal, podendo evoluir conforme necessidades futuras da Inpasa.
+  <section className="min-h-screen w-full snap-start flex flex-col items-center justify-center bg-slate-50/50 pb-16 pt-24 px-4 sm:px-8 text-slate-800 relative xl:scale-[0.85] origin-top">
+    {/* Cabeçalho do Diagrama */}
+    <div className="w-full max-w-[1880px] mb-8 flex flex-col md:flex-row items-start md:items-center justify-between bg-white p-6 rounded-2xl border border-slate-200 shadow-sm gap-4">
+      <div>
+        <h1 className="text-2xl font-extrabold text-slate-900 flex items-center gap-3 tracking-tight">
+          <Network className="text-emerald-600" size={28} />
+          03 // Ecossistema Integrado de Atendimento
+        </h1>
+        <p className="text-slate-500 text-sm mt-1 font-medium">
+          Arquitetura para dezenas de clientes focada em SLAs rigorosos (Uptime 99.5%) e deflexão via IA.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl">
-        
-        {/* ESCÔPO INCLUÍDO */}
-        <div className="bg-emerald-50/50 border-2 border-emerald-200 rounded-2xl p-6 shadow-sm flex flex-col hover:shadow-md transition-all">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-emerald-600 rounded-lg text-white">
-              <CheckCircle2 size={24} />
+      {/* Legenda de Níveis de Atendimento */}
+      <div className="flex flex-wrap gap-3 md:gap-5 text-xs font-semibold text-slate-600 bg-slate-50 p-3 rounded-xl border border-slate-100">
+        <div className="flex items-center gap-2">
+          <div className="w-3 h-3 rounded-full bg-blue-100 border border-blue-400 shadow-inner"></div>
+          Nível 1 (Chatbot)
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-3 h-3 rounded-full bg-indigo-100 border border-indigo-400 shadow-inner"></div>
+          Nível 2 (Portal)
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-3 h-3 rounded-full bg-emerald-100 border border-emerald-400 shadow-inner"></div>
+          Nível 3 (Agentes Humanos)
+        </div>
+      </div>
+    </div>
+
+    {/* CANVAS DO DIAGRAMA */}
+    <div className="w-full max-w-[1880px] bg-white rounded-3xl border border-slate-200 shadow-xl relative">
+
+      <div className="absolute inset-0 z-0 opacity-40 pointer-events-none bg-[radial-gradient(#cbd5e1_1.5px,transparent_1.5px)] [background-size:24px_24px]"></div>
+
+      <div className="relative z-10 p-8 md:p-12 lg:p-14 flex flex-col lg:flex-row items-center lg:items-stretch justify-center gap-0">
+
+        {/* COLUNA 1: CANAIS DE ENTRADA */}
+        <div className="flex flex-col justify-center gap-6 w-full max-w-[280px] lg:w-48 xl:w-56 shrink-0 z-10">
+          <NodeCard borderColor="border-slate-300" logo={<TechIcon src="https://cdn.simpleicons.org/whatsapp/25D366" alt="WhatsApp" size={40} />}>
+            <div className="w-12 h-12 bg-gradient-to-br from-green-50 to-green-100 text-green-600 rounded-full flex items-center justify-center mb-3 shadow-sm border border-green-200">
+              <MessageSquare size={24} />
             </div>
-            <h3 className="font-bold text-slate-800 text-xl">Escopo Incluído</h3>
+            <h3 className="font-bold text-slate-800 text-sm">WhatsApp Business</h3>
+            <p className="text-xs text-slate-500 mt-1 mb-2">Canal Instantâneo</p>
+            <TagBadge icon={Smartphone} text="Acesso Mobile" color="emerald" />
+          </NodeCard>
+
+          <NodeCard borderColor="border-slate-300">
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-50 to-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-3 shadow-sm border border-blue-200">
+              <Globe size={24} />
+            </div>
+            <h3 className="font-bold text-slate-800 text-sm">Web / Browser</h3>
+            <div className="flex gap-2 mb-2">
+              <TechIcon src="https://cdn.simpleicons.org/react/61DAFB" alt="React" size={14} />
+              <TechIcon src="https://cdn.simpleicons.org/tailwindcss/06B6D4" alt="Tailwind" size={14} />
+              <TechIcon src="https://cdn.simpleicons.org/typescript/3178C6" alt="TS" size={14} />
+            </div>
+            <p className="text-xs text-slate-500 mt-1 mb-2 font-medium">Ecossistema Moderno</p>
+            <TagBadge icon={Users} text="Autenticação Segura" color="emerald" />
+          </NodeCard>
+        </div>
+
+        <Arrow label="Mensageria" />
+
+        {/* COLUNA 2: CAMADA DE INGESTÃO & FILAS */}
+        <div className="flex flex-col justify-center gap-6 w-full max-w-[280px] lg:w-48 xl:w-56 shrink-0 z-10">
+          <NodeCard borderColor="border-orange-300" bg="bg-orange-50/30" logo={<TechIcon src="https://cdn.simpleicons.org/rabbitmq/FF6600" alt="RabbitMQ" size={32} />}>
+            <div className="w-12 h-12 bg-gradient-to-br from-orange-50 to-orange-100 text-orange-600 rounded-full flex items-center justify-center mb-3 shadow-sm border border-orange-200">
+              <Network size={24} />
+            </div>
+            <h3 className="font-bold text-slate-800 text-sm">Ingestão & Filas</h3>
+            <p className="text-[10px] text-slate-500 mt-1 mb-2 font-medium">Asincronismo & Resiliência</p>
+            <div className="flex gap-2 mb-2">
+              <TechIcon src="https://cdn.simpleicons.org/apachekafka/231F20" alt="Kafka" size={14} />
+              <TechIcon src="https://cdn.simpleicons.org/redis/DC382D" alt="Redis Streams" size={14} />
+            </div>
+            <TagBadge icon={CheckCircle2} text="ACK 200 Instantâneo" color="emerald" />
+          </NodeCard>
+        </div>
+
+        <Arrow label="Workers" />
+
+        {/* COLUNA 2: ATENDIMENTO NÍVEL 1 & 2 (BORDA/FRONTEND) */}
+        <div className="flex flex-col gap-6 w-full max-w-[280px] lg:w-56 xl:w-64 shrink-0 bg-gradient-to-b from-slate-50 to-transparent p-5 rounded-2xl border border-slate-200 relative z-10 shadow-sm">
+          <span className="absolute -top-3 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-6 bg-slate-100 text-slate-700 text-[10px] font-bold px-3 py-1 rounded-full border border-slate-300 uppercase tracking-wider whitespace-nowrap shadow-sm">
+            DMZ & Borda Pública
+          </span>
+
+          {/* WAF */}
+          <NodeCard borderColor="border-slate-300" logo={<TechIcon src="https://cdn.simpleicons.org/cloudflare/F38020" alt="Cloudflare" size={40} />}>
+            <div className="flex items-center gap-3 mb-2 w-full">
+              <Shield className="text-slate-600 shrink-0" size={20} />
+              <h3 className="font-bold text-slate-800 text-sm text-left">Cloudflare WAF</h3>
+            </div>
+            <p className="text-xs text-slate-500 mb-2 text-left w-full">Segurança de Borda e Mitigação DDoS.</p>
+          </NodeCard>
+
+          <div className="flex justify-center my-[-16px] relative z-10 text-slate-400">
+            <div className="w-0.5 h-8 bg-slate-300"></div>
           </div>
-          <div className="space-y-4 flex-1">
-            <div>
-              <h4 className="font-bold text-slate-700 text-sm border-b border-emerald-100 pb-1 mb-2">Portal do Cliente (B2B)</h4>
-              <ul className="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
-                <li>Autenticação segura de clientes</li>
-                <li>Dashboard de faturas e boletos</li>
-                <li>Consulta e download de pedidos</li>
-                <li>Histórico unificado e documentos</li>
-              </ul>
+
+          {/* Nível 1: Chatbot */}
+          <NodeCard borderColor="border-blue-300" bg="bg-blue-50/50">
+            <div className="flex items-center gap-3 mb-2 w-full">
+              <Bot className="text-blue-600 shrink-0" size={20} />
+              <h3 className="font-bold text-slate-800 text-sm text-left">Motor Chatbot/URA</h3>
             </div>
-            <div>
-              <h4 className="font-bold text-slate-700 text-sm border-b border-emerald-100 pb-1 mb-2">Assistente Virtual IA</h4>
-              <ul className="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
-                <li>FAQ interativo e navegação guiada</li>
-                <li>Consulta de situação financeira</li>
-                <li>Roteamento para transbordo humano</li>
-              </ul>
+            <p className="text-[11px] text-slate-600 mb-2 text-left w-full">
+              <strong>Nível 1:</strong> Menu interativo e escalação. Deflexão de 50-70%.
+            </p>
+            <TagBadge icon={Zap} text="SLA: Resposta < 2s" color="blue" />
+          </NodeCard>
+
+          {/* Nível 2: Portal */}
+          <NodeCard borderColor="border-indigo-300" bg="bg-indigo-50/50">
+            <div className="flex items-center gap-3 mb-2 w-full">
+              <div className="w-5 h-5 shrink-0 bg-[#61DAFB] rounded-full" />
+              <h3 className="font-bold text-slate-800 text-sm text-left">Portal React B2B</h3>
             </div>
+            <p className="text-[11px] text-slate-600 mb-2 text-left w-full">
+              <strong>Nível 2:</strong> Autoatendimento, boletos, histórico unificado.
+            </p>
+            <TagBadge icon={Zap} text="SLA: Load < 3s" color="indigo" />
+          </NodeCard>
+        </div>
+
+        <Arrow label="API Gateway" />
+
+        {/* COLUNA 3: ORQUESTRAÇÃO & SEGURANÇA (CORE API) */}
+        <div className="flex flex-col justify-center w-full max-w-[280px] lg:w-48 xl:w-56 shrink-0 bg-gradient-to-b from-slate-100/80 to-transparent p-5 rounded-2xl border border-slate-200 relative z-10 shadow-sm">
+          <span className="absolute -top-3 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-6 bg-slate-200 text-slate-800 text-[10px] font-bold px-3 py-1 rounded-full border border-slate-300 uppercase tracking-wider whitespace-nowrap shadow-sm">
+            Orquestração Segura
+          </span>
+          <NodeCard borderColor="border-slate-400" logo={<TechIcon src="https://cdn.simpleicons.org/nodedotjs/339933" alt="Node" size={40} />}>
+            <div className="w-14 h-14 bg-gradient-to-br from-slate-100 to-slate-200 text-slate-700 rounded-full flex items-center justify-center mb-4 border border-slate-300 shadow-sm">
+              <Cpu size={28} />
+            </div>
+            <h3 className="font-bold text-slate-900 text-sm">Microsserviços Node</h3>
+            <div className="flex gap-2 mb-3">
+              <TechIcon src="https://cdn.simpleicons.org/nestjs/E0234E" alt="NestJS" size={12} />
+              <TechIcon src="https://cdn.simpleicons.org/auth0/EB5424" alt="Auth0" size={12} />
+              <TechIcon src="https://cdn.simpleicons.org/prisma/2D3748" alt="Prisma" size={12} />
+            </div>
+            <p className="text-xs text-slate-500 mt-1 mb-4 leading-relaxed">
+              Consome filas e orquestra fluxos entre AI, ERP e Salesforce.
+            </p>
+            <TagBadge icon={ShieldCheck} text="Rate Limit & JWT" color="emerald" />
+          </NodeCard>
+
+          <div className="flex justify-center my-[-12px] relative z-10 text-slate-400">
+            <div className="w-0.5 h-6 bg-slate-300 border-x border-white"></div>
+          </div>
+
+          {/* Motor de IA Cognitiva */}
+          <NodeCard borderColor="border-blue-400" bg="bg-blue-50/30" logo={<TechIcon src="https://cdn.simpleicons.org/langchain/1C3C3C" alt="LangChain" size={32} />}>
+            <div className="flex items-center gap-3 mb-2 w-full">
+              <Brain className="text-blue-600 shrink-0" size={20} />
+              <h3 className="font-bold text-slate-900 text-sm italic">Motor de IA Cognitiva</h3>
+            </div>
+            <div className="flex gap-2 mb-2 w-full overflow-x-hidden">
+              <GraphQLIcon size={12} className="text-[#E10098]" />
+              <TechIcon src="https://cdn.simpleicons.org/anthropic/D1D5DB" alt="Anthropic" size={12} />
+              <TechIcon src="https://cdn.simpleicons.org/neo4j/008CC1" alt="Neo4j" size={12} />
+              <TechIcon src="https://cdn.simpleicons.org/supabase/3ECF8E" alt="pgvector" size={12} />
+            </div>
+            <p className="text-[10px] text-slate-600 text-left leading-tight mb-2">
+              Workflows Multi-Agentes com <strong>GraphRAG</strong> (Memória Corporativa).
+            </p>
+            <TagBadge icon={Activity} text="Cognição em Tempo Real" color="blue" />
+          </NodeCard>
+        </div>
+
+        <Arrow label="Integração Nativa" />
+
+        {/* COLUNA 4: ECOSSISTEMA INPASA (NÍVEL 3 & DADOS) */}
+        <div className="flex flex-col gap-6 w-full lg:w-auto lg:flex-1 bg-gradient-to-br from-emerald-50/80 to-transparent p-5 xl:p-8 rounded-2xl border-2 border-emerald-200 border-dashed relative z-10 shadow-sm">
+          <span className="absolute -top-3 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-6 bg-emerald-100 text-emerald-800 text-[10px] font-bold px-3 py-1 rounded-full border border-emerald-300 uppercase tracking-wider whitespace-nowrap shadow-sm">
+            Sistemas Core da Inpasa (Intranet)
+          </span>
+
+          <div className="flex flex-col xl:flex-row items-stretch gap-6 h-full mt-2">
+
+            {/* Salesforce - Nível 3 */}
+            <div className="flex-1 bg-white border-2 border-emerald-400 rounded-xl p-5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-3 opacity-10"><Cloud size={80} /></div>
+              <div>
+                <div className="flex items-center gap-3 mb-3 border-b border-slate-100 pb-3 relative z-10">
+                  <Cloud className="text-sky-500 bg-sky-50 p-1.5 rounded-lg border border-sky-100" size={32} />
+                  <h3 className="font-bold text-slate-800 text-base">Salesforce Sales Cloud</h3>
+                </div>
+                <p className="text-xs text-slate-600 mb-4 leading-relaxed relative z-10">
+                  <strong>Nível 3: Agentes Humanos.</strong> Visão 360 do histórico consolidado (Chatbot + Portal + Tickets). Sem repetição de contexto.
+                </p>
+              </div>
+
+              <div className="space-y-2 mt-auto relative z-10">
+                <TagBadge icon={Headset} text="Resolução Omnichannel" color="emerald" />
+              </div>
+            </div>
+
+            {/* ERP e Dados */}
+            <div className="flex-1 flex flex-col gap-4">
+
+              {/* ERP Sync */}
+              <div className="bg-slate-900 border-2 border-slate-800 rounded-xl p-4 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all relative text-white text-left w-full overflow-hidden">
+                <div className="absolute top-2 right-2 opacity-20">
+                  <TechIcon src="https://cdn.simpleicons.org/vercel/FFFFFF" alt="Vercel" size={24} className="grayscale-0" />
+                </div>
+                <div className="flex items-center gap-3 mb-2">
+                  <Server className="text-lime-400 shrink-0" size={20} />
+                  <h3 className="font-bold text-white text-sm">Hospedagem Vercel</h3>
+                </div>
+                <p className="text-[11px] text-slate-400 leading-relaxed">Performance Global e Segurança de Borda (Premium SDK).</p>
+              </div>
+
+              {/* Database Custom */}
+              <NodeCard borderColor="border-emerald-300" logo={<TechIcon src="https://cdn.simpleicons.org/postgresql/4169E1" alt="Postgres" size={32} />}>
+                <div className="flex items-center gap-3 mb-2 w-full">
+                  <Database className="text-emerald-600 shrink-0" size={20} />
+                  <h3 className="font-bold text-slate-800 text-sm text-left">PostgreSQL & Redis</h3>
+                </div>
+                <p className="text-[11px] text-slate-500 mb-2 text-left w-full">Cache ultra rápido para garantir respostas em &lt;2s.</p>
+                <TagBadge icon={Lock} text="Criptografia LGPD" color="emerald" />
+              </NodeCard>
+
+            </div>
+
           </div>
         </div>
 
-        {/* FORA DE ESCOPO */}
-        <div className="bg-slate-50 border-2 border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col hover:shadow-md transition-all">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-slate-400 rounded-lg text-white">
-              <AlertTriangle size={24} />
+      </div>
+
+      {/* CAMADA INFERIOR: MONOREPO E ESTEIRA DE DEPLOY SEGURA */}
+      <div className="relative z-10 p-6 md:p-10 lg:p-12 border-t-2 border-slate-100 bg-slate-50/80">
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-200 text-slate-700 text-[10px] font-bold px-4 py-1 rounded-full border border-slate-300 uppercase tracking-wider whitespace-nowrap shadow-sm">
+          Arquitetura de Qualidade & CI/CD (Garantia de 99.5% Uptime)
+        </span>
+
+        <div className="flex flex-col lg:flex-row gap-6 justify-between items-stretch max-w-6xl mx-auto mt-4">
+
+          <div className="flex-1 bg-white border-2 border-slate-200 rounded-xl p-5 shadow-sm flex flex-col relative overflow-hidden">
+            <div className="absolute -right-4 -bottom-4 opacity-5"><GitBranch size={80} /></div>
+            <div className="absolute top-2 right-2 opacity-20">
+              <TechIcon src="https://cdn.simpleicons.org/turborepo/EF4444" alt="Turborepo" size={24} className="grayscale-0" />
             </div>
-            <h3 className="font-bold text-slate-800 text-xl">Fora do Escopo</h3>
+            <div className="flex items-center gap-3 mb-3">
+              <GitBranch className="text-slate-600" size={20} />
+              <h3 className="font-bold text-slate-800 text-sm">Workspace Monorepo</h3>
+            </div>
+            <p className="text-xs text-slate-500 mb-3 leading-relaxed">Portal, API e Integração Chatbot unificados (Turbo/Nx).</p>
+            <TagBadge icon={Lock} text="Governança de Código" color="emerald" />
           </div>
-          <div className="space-y-4 flex-1">
-            <p className="text-xs text-slate-500 font-medium italic mb-2">Não fazem parte desta implantação inicial:</p>
-            <ul className="text-xs text-slate-600 space-y-1.5">
-              <li className="flex items-center gap-2">
-                <div className="w-1 h-1 bg-slate-400 rounded-full" />
-                <span>Integração nativa WhatsApp Business</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <div className="w-1 h-1 bg-slate-400 rounded-full" />
-                <span>Desenvolvimento de CRM próprio</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <div className="w-1 h-1 bg-slate-400 rounded-full" />
-                <span>Automação completa via Salesforce</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <div className="w-1 h-1 bg-slate-400 rounded-full" />
-                <span>Desenvolvimento de App Mobile nativo</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <div className="w-1 h-1 bg-slate-400 rounded-full" />
-                <span>Desenvolvimento de novas integrações não previstas</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <div className="w-1 h-1 bg-slate-400 rounded-full" />
-                <span>Treinamento de IA com bases documentais extensas</span>
-              </li>
+
+          <div className="hidden lg:flex flex-col items-center justify-center text-slate-400 shrink-0">
+            <div className="w-8 h-0.5 bg-slate-300 relative">
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 border-t-2 border-r-2 border-slate-400 transform rotate-45"></div>
+            </div>
+          </div>
+
+          <div className="flex-1 bg-white border-2 border-slate-200 rounded-xl p-5 shadow-sm flex flex-col relative overflow-hidden">
+            <div className="absolute -right-4 -bottom-4 opacity-5"><Box size={80} /></div>
+            <div className="absolute top-2 right-2 opacity-20">
+              <TechIcon src="https://cdn.simpleicons.org/github/181717" alt="GitHub" size={24} className="grayscale-0" />
+            </div>
+            <div className="flex items-center gap-3 mb-3">
+              <Box className="text-indigo-500" size={20} />
+              <h3 className="font-bold text-slate-800 text-sm">CI/CD & Shared Packages</h3>
+            </div>
+            <p className="text-xs text-slate-500 mb-3 leading-relaxed">GitHub Actions com scans de segurança e DTOs unificados.</p>
+            <TagBadge icon={CheckSquare} text="Fonte Única da Verdade" color="emerald" />
+          </div>
+
+          <div className="hidden lg:flex flex-col items-center justify-center text-slate-400 shrink-0">
+            <div className="w-8 h-0.5 bg-slate-300 relative">
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 border-t-2 border-r-2 border-slate-400 transform rotate-45"></div>
+            </div>
+          </div>
+
+          <div className="flex-1 bg-white border-2 border-slate-200 rounded-xl p-5 shadow-sm flex flex-col relative overflow-hidden">
+            <div className="absolute -right-4 -bottom-4 opacity-5"><ShieldCheck size={80} /></div>
+            <div className="absolute top-2 right-2 opacity-20">
+              <TechIcon src="https://cdn.simpleicons.org/sentry/362D59" alt="Sentry" size={24} className="grayscale-0" />
+            </div>
+            <div className="flex items-center gap-3 mb-3">
+              <ShieldCheck className="text-emerald-500" size={20} />
+              <h3 className="font-bold text-slate-800 text-sm">Monitoramento & Deploy</h3>
+            </div>
+            <p className="text-xs text-slate-500 mb-3 leading-relaxed">Rastreabilidade 24/7 com Sentry e Deploy Zero-Downtime.</p>
+            <TagBadge icon={ShieldAlert} text="QA & Testes Estáticos" color="emerald" />
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+);
+const GovernanceSection: React.FC = () => (
+  <section className="min-h-screen w-full snap-start flex flex-col items-center justify-center bg-white pb-16 pt-24 px-8 text-slate-800 relative xl:scale-[0.9] origin-top">
+    <div className="w-full max-w-7xl mb-10 text-center">
+      <SectionTag text="Governança & Garantias" />
+      <h2 className="text-4xl font-extrabold text-slate-900 tracking-tight mt-2">
+        Escopo da Implantação Inicial
+      </h2>
+      <p className="text-slate-500 max-w-2xl mx-auto mt-4 text-lg italic">
+        As funcionalidades descritas referem-se à primeira fase do portal, podendo evoluir conforme necessidades futuras da Inpasa.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl">
+
+      {/* ESCÔPO INCLUÍDO */}
+      <div className="bg-emerald-50/50 border-2 border-emerald-200 rounded-2xl p-6 shadow-sm flex flex-col hover:shadow-md transition-all">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="p-2 bg-emerald-600 rounded-lg text-white">
+            <CheckCircle2 size={24} />
+          </div>
+          <h3 className="font-bold text-slate-800 text-xl">Escopo Incluído</h3>
+        </div>
+        <div className="space-y-4 flex-1">
+          <div>
+            <h4 className="font-bold text-slate-700 text-sm border-b border-emerald-100 pb-1 mb-2">Portal do Cliente (B2B)</h4>
+            <ul className="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
+              <li>Autenticação segura de clientes</li>
+              <li>Dashboard de faturas e boletos</li>
+              <li>Consulta e download de pedidos</li>
+              <li>Histórico unificado e documentos</li>
             </ul>
-            <div className="mt-4 p-3 bg-white border border-slate-200 rounded-xl text-[10px] text-slate-400">
-               *Estas funcionalidades poderão ser avaliadas em fases futuras.
-            </div>
           </div>
-        </div>
-
-        {/* SUPORTE E SLA */}
-        <div className="bg-indigo-50/50 border-2 border-indigo-200 rounded-2xl p-6 shadow-sm flex flex-col hover:shadow-md transition-all">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-indigo-600 rounded-lg text-white">
-              <Clock size={24} />
-            </div>
-            <h3 className="font-bold text-slate-800 text-xl">Suporte & SLA</h3>
-          </div>
-          <div className="space-y-4 flex-1">
-            <div className="bg-white p-3 rounded-xl border border-indigo-100 flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-700">Disponibilidade</span>
-              <span className="text-xs font-black text-indigo-600">99.5% Uptime</span>
-            </div>
-            <div className="bg-white p-3 rounded-xl border border-indigo-100 flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-700">Resp. Suporte</span>
-              <span className="text-xs font-black text-indigo-600">&lt; 24 Horas</span>
-            </div>
-            <div>
-              <h4 className="font-bold text-slate-700 text-xs mb-2 mt-4">Plano Mensal Inclui:</h4>
-              <ul className="text-[11px] text-slate-600 space-y-1.5 list-disc pl-4">
-                <li>Manutenção e Correção de Bugs</li>
-                <li><strong>8h de Pequenas Melhorias</strong>*</li>
-                <li>Hospedagem Gerenciada e Backups</li>
-              </ul>
-            </div>
-            <p className="text-[9px] text-slate-400 italic mt-auto">
-              *Pequenas melhorias correspondem a ajustes que demandem até 8 horas de desenvolvimento por mês.
-            </p>
-          </div>
-        </div>
-
-      </div>
-
-      <div className="mt-12 w-full max-w-7xl flex flex-col items-center">
-        <div className="bg-slate-900 text-white p-6 rounded-3xl flex flex-col md:flex-row items-center gap-8 w-full shadow-2xl relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 blur-[60px] rounded-full group-hover:bg-emerald-500/20 transition-all duration-500" />
-          <div className="flex-1">
-            <h4 className="text-emerald-400 font-bold uppercase tracking-widest text-[10px] mb-2">Critério de Entrega Final</h4>
-            <p className="text-slate-200 text-sm leading-relaxed">
-              O projeto será considerado concluído quando o portal estiver disponível em ambiente de produção, com as funcionalidades operacionais e integração básica validada pela equipe técnica da Inpasa.
-            </p>
-          </div>
-          <div className="w-px h-16 bg-slate-800 hidden md:block" />
-          <div className="flex-1 italic text-slate-400 text-xs">
-            "Esta proposta contempla a implantação de uma primeira versão da plataforma, que poderá evoluir conforme o uso e necessidades da Inpasa."
+          <div>
+            <h4 className="font-bold text-slate-700 text-sm border-b border-emerald-100 pb-1 mb-2">Assistente Virtual IA</h4>
+            <ul className="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
+              <li>FAQ interativo e navegação guiada</li>
+              <li>Consulta de situação financeira</li>
+              <li>Roteamento para transbordo humano</li>
+            </ul>
           </div>
         </div>
       </div>
-   </section>
+
+      {/* FORA DE ESCOPO */}
+      <div className="bg-slate-50 border-2 border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col hover:shadow-md transition-all">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="p-2 bg-slate-400 rounded-lg text-white">
+            <AlertTriangle size={24} />
+          </div>
+          <h3 className="font-bold text-slate-800 text-xl">Fora do Escopo</h3>
+        </div>
+        <div className="space-y-4 flex-1">
+          <p className="text-xs text-slate-500 font-medium italic mb-2">Não fazem parte desta implantação inicial:</p>
+          <ul className="text-xs text-slate-600 space-y-1.5">
+            <li className="flex items-center gap-2">
+              <div className="w-1 h-1 bg-slate-400 rounded-full" />
+              <span>Integração nativa WhatsApp Business</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <div className="w-1 h-1 bg-slate-400 rounded-full" />
+              <span>Desenvolvimento de CRM próprio</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <div className="w-1 h-1 bg-slate-400 rounded-full" />
+              <span>Automação completa via Salesforce</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <div className="w-1 h-1 bg-slate-400 rounded-full" />
+              <span>Desenvolvimento de App Mobile nativo</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <div className="w-1 h-1 bg-slate-400 rounded-full" />
+              <span>Desenvolvimento de novas integrações não previstas</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <div className="w-1 h-1 bg-slate-400 rounded-full" />
+              <span>Treinamento de IA com bases documentais extensas</span>
+            </li>
+          </ul>
+          <div className="mt-4 p-3 bg-white border border-slate-200 rounded-xl text-[10px] text-slate-400">
+            *Estas funcionalidades poderão ser avaliadas em fases futuras.
+          </div>
+        </div>
+      </div>
+
+      {/* SUPORTE E SLA */}
+      <div className="bg-indigo-50/50 border-2 border-indigo-200 rounded-2xl p-6 shadow-sm flex flex-col hover:shadow-md transition-all">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="p-2 bg-indigo-600 rounded-lg text-white">
+            <Clock size={24} />
+          </div>
+          <h3 className="font-bold text-slate-800 text-xl">Suporte & SLA</h3>
+        </div>
+        <div className="space-y-4 flex-1">
+          <div className="bg-white p-3 rounded-xl border border-indigo-100 flex items-center justify-between">
+            <span className="text-xs font-bold text-slate-700">Disponibilidade</span>
+            <span className="text-xs font-black text-indigo-600">99.5% Uptime</span>
+          </div>
+          <div className="bg-white p-3 rounded-xl border border-indigo-100 flex items-center justify-between">
+            <span className="text-xs font-bold text-slate-700">Resp. Suporte</span>
+            <span className="text-xs font-black text-indigo-600">&lt; 24 Horas</span>
+          </div>
+          <div>
+            <h4 className="font-bold text-slate-700 text-xs mb-2 mt-4">Plano Mensal Inclui:</h4>
+            <ul className="text-[11px] text-slate-600 space-y-1.5 list-disc pl-4">
+              <li>Manutenção e Correção de Bugs</li>
+              <li><strong>8h de Pequenas Melhorias</strong>*</li>
+              <li>Hospedagem Gerenciada e Backups</li>
+            </ul>
+          </div>
+          <p className="text-[9px] text-slate-400 italic mt-auto">
+            *Pequenas melhorias correspondem a ajustes que demandem até 8 horas de desenvolvimento por mês.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div className="mt-12 w-full max-w-7xl flex flex-col items-center">
+      <div className="bg-slate-900 text-white p-6 rounded-3xl flex flex-col md:flex-row items-center gap-8 w-full shadow-2xl relative overflow-hidden group">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 blur-[60px] rounded-full group-hover:bg-emerald-500/20 transition-all duration-500" />
+        <div className="flex-1">
+          <h4 className="text-emerald-400 font-bold uppercase tracking-widest text-[10px] mb-2">Critério de Entrega Final</h4>
+          <p className="text-slate-200 text-sm leading-relaxed">
+            O projeto será considerado concluído quando o portal estiver disponível em ambiente de produção, com as funcionalidades operacionais e integração básica validada pela equipe técnica da Inpasa.
+          </p>
+        </div>
+        <div className="w-px h-16 bg-slate-800 hidden md:block" />
+        <div className="flex-1 italic text-slate-400 text-xs">
+          "Esta proposta contempla a implantação de uma primeira versão da plataforma, que poderá evoluir conforme o uso e necessidades da Inpasa."
+        </div>
+      </div>
+    </div>
+  </section>
 );
 
 
@@ -931,7 +930,7 @@ const StrategySection: React.FC = () => (
         <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} className="motion-gpu">
           <SectionTag text="04 // Execução" />
           <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight text-tight">
-            Fases Acionáveis (Go-Live até 12m)
+            Fases Acionáveis (Go-Live até 6m)
           </h2>
         </motion.div>
       </div>
@@ -943,7 +942,7 @@ const StrategySection: React.FC = () => (
           { step: 'Homologação', title: 'Testes de Risco', desc: 'Validação de segurança, simulação de chamados e testes de carga com a equipe Inpasa.', icon: <CheckCircle2 />, highlight: true },
           { step: 'Entrega', title: 'Go-Live Oficial', desc: 'Publicação da plataforma, treinamento operacional e monitoramento inicial de adoção.', icon: <Rocket />, highlight: false }
         ].map((s, i) => (
-          <motion.div 
+          <motion.div
             key={s.step}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -967,7 +966,7 @@ const StrategySection: React.FC = () => (
 const ProtocolSection: React.FC = () => (
   <section className="h-screen w-full snap-start flex flex-col justify-center bg-slate-50 px-8 md:px-12 pt-16">
     <div className="max-w-7xl w-full mx-auto h-full flex flex-col py-4">
-      
+
       {/* Header Compacto */}
       <div className="text-center mb-6 shrink-0">
         <SectionTag text="05 // Estrutura de Investimento" />
@@ -978,9 +977,9 @@ const ProtocolSection: React.FC = () => (
           Pagamento vinculado a entregas claras (Milestones)
         </p>
       </div>
-      
+
       <div className="w-full flex-grow flex flex-col gap-6 justify-center min-h-0">
-        
+
         {/* Setup - Milestones */}
         <motion.div whileHover={{ borderColor: 'rgba(5, 150, 105, 0.4)', boxShadow: '0 20px 25px -5px rgba(5, 150, 105, 0.1)' }} className="bg-white border md:border-2 border-slate-200 shadow-xl shadow-slate-200/50 rounded-3xl p-6 lg:p-8 flex flex-col shrink-0 transition-all z-10">
           <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6 pb-5 border-b-2 border-slate-50">
@@ -1011,7 +1010,7 @@ const ProtocolSection: React.FC = () => (
               },
               {
                 step: '3️⃣ Integrações & IA', pct: '20%', val: '10.000', cond: 'Conexões Prontas',
-                items: ['Integr. ERP', 'Chatbot', 'Consultas auto']
+                items: ['Integração leve ERP', 'Integração leve Salesforce', 'Assistente Virtual', 'Consultas automáticas']
               },
               {
                 step: '4️⃣ Go-live', pct: '10%', val: '5.000', cond: 'Publicação Final',
@@ -1049,9 +1048,9 @@ const ProtocolSection: React.FC = () => (
             <div>
               <span className="text-[10px] lg:text-xs text-emerald-600 font-black uppercase tracking-[0.2em]">OPEX (SaaS & Nuvem)</span>
               <div className="flex items-baseline gap-2 mt-1">
-                 <h3 className="text-2xl lg:text-3xl font-black text-slate-900 tracking-tight leading-none">Licenças + Infraestrutura</h3>
-                 <span className="text-3xl lg:text-4xl font-black text-emerald-600 tracking-tighter ml-2 lg:ml-4">R$ 7.000</span>
-                 <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">/ Mês</span>
+                <h3 className="text-2xl lg:text-3xl font-black text-slate-900 tracking-tight leading-none">Licenças + Infraestrutura</h3>
+                <span className="text-3xl lg:text-4xl font-black text-emerald-600 tracking-tighter ml-2 lg:ml-4">R$ 7.000</span>
+                <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">/ Mês</span>
               </div>
             </div>
           </div>
@@ -1064,7 +1063,7 @@ const ProtocolSection: React.FC = () => (
               'SLA: Manutenção Evolutiva'
             ].map(item => (
               <div key={item} className="flex items-center gap-3">
-                <CheckCircle2 size={18} className="text-emerald-500 shrink-0" /> 
+                <CheckCircle2 size={18} className="text-emerald-500 shrink-0" />
                 <span className="text-sm font-bold text-slate-700 leading-tight">{item}</span>
               </div>
             ))}
@@ -1085,8 +1084,8 @@ const ProtocolSection: React.FC = () => (
             </p>
           </div>
         </div>
-        
-        <motion.button 
+
+        <motion.button
           whileHover={{ scale: 1.05, backgroundColor: '#059669', boxShadow: '0 0 30px rgba(16, 185, 129, 0.4)' }}
           whileTap={{ scale: 0.95 }}
           onClick={() => window.open('https://wa.me/5551994195853?text=Ol%C3%A1%20Adriano!%20Gostaria%20de%20aprovar%20a%20proposta%20do%20Portal%20Inpasa%20e%20iniciar%20o%20Kickoff%20T%C3%A9cnico.', '_blank')}
@@ -1102,25 +1101,25 @@ const ProtocolSection: React.FC = () => (
 
 const CorporateLoader: React.FC = () => (
   <div className="h-screen w-full bg-slate-50 flex flex-col items-center justify-center font-sans antialiased subpixel-antialiased">
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="text-center w-72 motion-gpu"
     >
       <div className="flex justify-center mb-10">
         <div className="relative flex items-center justify-center">
-          <motion.img 
+          <motion.img
             animate={{ scale: [1, 1.02, 1] }}
             transition={{ repeat: Infinity, duration: 2.5 }}
             src="https://www.inpasa.com.br/wp-content/themes/inpasa/assets/images/logo.svg"
             alt="Inpasa"
             className="h-12 w-auto object-contain object-center relative z-10"
             onError={(e) => {
-               const target = e.target as HTMLImageElement;
-               target.style.display = 'none';
-               if (target.nextElementSibling) {
-                 (target.nextElementSibling as HTMLElement).style.display = 'flex';
-               }
+              const target = e.target as HTMLImageElement;
+              target.style.display = 'none';
+              if (target.nextElementSibling) {
+                (target.nextElementSibling as HTMLElement).style.display = 'flex';
+              }
             }}
           />
           <div className="hidden items-center gap-2 relative z-10">
@@ -1128,7 +1127,7 @@ const CorporateLoader: React.FC = () => (
             <span className="text-3xl font-black tracking-tighter text-slate-900">Inpasa</span>
           </div>
 
-          <motion.div 
+          <motion.div
             animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.3, 0.1] }}
             transition={{ duration: 2, repeat: Infinity }}
             className="absolute inset-0 bg-emerald-600 blur-3xl -z-10"
@@ -1136,9 +1135,9 @@ const CorporateLoader: React.FC = () => (
         </div>
       </div>
       <p className="text-[10px] text-slate-500 uppercase tracking-[0.4em] font-black mb-8">Inicializando Estrutura</p>
-      
+
       <div className="w-full h-1 bg-slate-200 rounded-full overflow-hidden">
-        <motion.div 
+        <motion.div
           initial={{ width: 0 }}
           animate={{ width: '100%' }}
           transition={{ duration: 1.8, ease: 'easeInOut' }}
@@ -1165,18 +1164,18 @@ const Footer: React.FC<FooterProps> = ({ onSecurityClick }) => (
     <div className="absolute bottom-0 left-0 w-64 h-64 bg-slate-800/50 blur-[80px] rounded-full pointer-events-none" />
 
     <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 relative z-10">
-      
+
       {/* Coluna 1: Branding */}
       <div className="flex flex-col items-start gap-6 max-w-sm">
-        <a 
-          href="https://altrahub.com.br" 
-          target="_blank" 
+        <a
+          href="https://altrahub.com.br"
+          target="_blank"
           rel="noopener noreferrer"
           className="transition-transform hover:scale-105 active:scale-95 duration-300"
         >
-          <img 
-            src="/altrahub-logo-light.svg" 
-            alt="AltraHub" 
+          <img
+            src="/altrahub-logo-light.svg"
+            alt="AltraHub"
             className="h-8 w-auto"
           />
         </a>
@@ -1189,17 +1188,17 @@ const Footer: React.FC<FooterProps> = ({ onSecurityClick }) => (
       <div className="flex flex-col md:items-end gap-6 h-full justify-between">
         <div className="flex flex-col md:items-end gap-4">
           <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">Nossos Canais</span>
-          <a 
-            href="https://altrahub.com.br" 
-            target="_blank" 
+          <a
+            href="https://altrahub.com.br"
+            target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-2 text-white text-xs font-bold uppercase tracking-widest hover:text-emerald-400 transition-colors"
           >
             Conheça o Site Oficial
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
           </a>
-          
-          <button 
+
+          <button
             onClick={onSecurityClick}
             className="group flex items-center gap-2 text-slate-400 text-xs font-bold uppercase tracking-widest hover:text-emerald-400 transition-colors mt-2"
           >
@@ -1210,9 +1209,9 @@ const Footer: React.FC<FooterProps> = ({ onSecurityClick }) => (
 
         <div className="flex flex-col md:items-end gap-1 pt-6 border-t border-slate-800 w-full">
           <p className="text-slate-500 text-[10px] font-bold uppercase tracking-wider">© 2026 AltraHub Software House</p>
-          <a 
-            href="https://altrahub.com.br" 
-            target="_blank" 
+          <a
+            href="https://altrahub.com.br"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-white text-[11px] font-black hover:text-emerald-400 transition-colors"
           >
