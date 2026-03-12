@@ -541,14 +541,14 @@ const ArchitectureSection: React.FC = () => (
             <div className="w-12 h-12 bg-gradient-to-br from-blue-50 to-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-3 shadow-sm border border-blue-200">
               <Globe size={24} />
             </div>
-            <h3 className="font-bold text-slate-800 text-sm">Web / Browser</h3>
+            <h3 className="font-bold text-slate-800 text-sm">Portal Web (PWA)</h3>
             <div className="flex gap-2 mb-2">
               <TechIcon src="https://cdn.simpleicons.org/react/61DAFB" alt="React" size={14} />
               <TechIcon src="https://cdn.simpleicons.org/tailwindcss/06B6D4" alt="Tailwind" size={14} />
-              <TechIcon src="https://cdn.simpleicons.org/typescript/3178C6" alt="TS" size={14} />
+              <TechIcon src="https://cdn.simpleicons.org/pwa/5A0FC8" alt="PWA" size={14} />
             </div>
-            <p className="text-xs text-slate-500 mt-1 mb-2 font-medium">Ecossistema Moderno</p>
-            <TagBadge icon={Users} text="Autenticação Segura" color="emerald" />
+            <p className="text-[10px] text-slate-500 mt-1 mb-2 font-medium">Responsivo & Offline Ready</p>
+            <TagBadge icon={Smartphone} text="Experiência Mobile" color="emerald" />
           </NodeCard>
         </div>
 
@@ -598,7 +598,7 @@ const ArchitectureSection: React.FC = () => (
               <h3 className="font-bold text-slate-800 text-sm text-left">Motor Chatbot/URA</h3>
             </div>
             <p className="text-[11px] text-slate-600 mb-2 text-left w-full">
-              <strong>Nível 1:</strong> Menu interativo e escalação. Deflexão de 50-70%.
+              Triagem inteligente e <strong>encaminhamento para mensageria</strong>. Deflexão via IA.
             </p>
             <TagBadge icon={Zap} text="SLA: Resposta < 2s" color="blue" />
           </NodeCard>
@@ -607,7 +607,7 @@ const ArchitectureSection: React.FC = () => (
           <NodeCard borderColor="border-indigo-300" bg="bg-indigo-50/50">
             <div className="flex items-center gap-3 mb-2 w-full">
               <div className="w-5 h-5 shrink-0 bg-[#61DAFB] rounded-full" />
-              <h3 className="font-bold text-slate-800 text-sm text-left">Portal React B2B</h3>
+              <h3 className="font-bold text-slate-800 text-sm text-left">Portal B2B (PWA)</h3>
             </div>
             <p className="text-[11px] text-slate-600 mb-2 text-left w-full">
               <strong>Nível 2:</strong> Autoatendimento, boletos, histórico unificado.
@@ -681,7 +681,7 @@ const ArchitectureSection: React.FC = () => (
                   <h3 className="font-bold text-slate-800 text-base">Salesforce Sales Cloud</h3>
                 </div>
                 <p className="text-xs text-slate-600 mb-4 leading-relaxed relative z-10">
-                  <strong>Nível 3: Agentes Humanos.</strong> Visão 360 do histórico consolidado (Chatbot + Portal + Tickets). Sem repetição de contexto.
+                  <strong>Integração Leve.</strong> Consulta de informações comerciais para apoio à decisão (Agentes Nível 3).
                 </p>
               </div>
 
@@ -705,14 +705,14 @@ const ArchitectureSection: React.FC = () => (
                 <p className="text-[11px] text-slate-400 leading-relaxed">Performance Global e Segurança de Borda (Premium SDK).</p>
               </div>
 
-              {/* Database Custom */}
-              <NodeCard borderColor="border-emerald-300" logo={<TechIcon src="https://cdn.simpleicons.org/postgresql/4169E1" alt="Postgres" size={32} />}>
+              {/* ERP Integration */}
+              <NodeCard borderColor="border-emerald-300" logo={<TechIcon src="https://cdn.simpleicons.org/sap/008FD3" alt="ERP" size={32} />}>
                 <div className="flex items-center gap-3 mb-2 w-full">
                   <Database className="text-emerald-600 shrink-0" size={20} />
-                  <h3 className="font-bold text-slate-800 text-sm text-left">PostgreSQL & Redis</h3>
+                  <h3 className="font-bold text-slate-800 text-sm text-left">ERP Inpasa (Consulta)</h3>
                 </div>
-                <p className="text-[11px] text-slate-500 mb-2 text-left w-full">Cache ultra rápido para garantir respostas em &lt;2s.</p>
-                <TagBadge icon={Lock} text="Criptografia LGPD" color="emerald" />
+                <p className="text-[11px] text-slate-500 mb-2 text-left w-full"><strong>Consulta de dados</strong> de pedidos, estoque e faturas em tempo real.</p>
+                <TagBadge icon={Lock} text="Dados Somente Leitura" color="emerald" />
               </NodeCard>
 
             </div>
@@ -819,11 +819,18 @@ const GovernanceSection: React.FC = () => (
             </ul>
           </div>
           <div>
-            <h4 className="font-bold text-slate-700 text-sm border-b border-emerald-100 pb-1 mb-2">Assistente Virtual IA</h4>
+            <h4 className="font-bold text-slate-700 text-sm border-b border-emerald-100 pb-1 mb-2">Experiência Mobile (PWA)</h4>
+            <p className="text-[10px] text-slate-500 mb-2 leading-relaxed">
+              Desenvolvimento responsivo compatível com <strong>Progressive Web App (PWA)</strong>, otimizado para celulares sem necessidade de app nativo.
+            </p>
+          </div>
+          <div>
+            <h4 className="font-bold text-slate-700 text-sm border-b border-emerald-100 pb-1 mb-2">Assistente Virtual & Integrações</h4>
             <ul className="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
               <li>FAQ interativo e navegação guiada</li>
-              <li>Consulta de situação financeira</li>
-              <li>Roteamento para transbordo humano</li>
+              <li><strong>Consulta de dados</strong> no ERP (financeiro)</li>
+              <li>Integração leve com Salesforce (comercial)</li>
+              <li>Encaminhamento para mensageria/WhatsApp</li>
             </ul>
           </div>
         </div>
@@ -840,29 +847,21 @@ const GovernanceSection: React.FC = () => (
         <div className="space-y-4 flex-1">
           <p className="text-xs text-slate-500 font-medium italic mb-2">Não fazem parte desta implantação inicial:</p>
           <ul className="text-xs text-slate-600 space-y-1.5">
-            <li className="flex items-center gap-2">
-              <div className="w-1 h-1 bg-slate-400 rounded-full" />
-              <span>Integração nativa WhatsApp Business</span>
+            <li className="flex items-center gap-2 text-red-600/70 font-medium">
+              <div className="w-1 h-1 bg-red-400 rounded-full" />
+              <span>Escrita de dados no ERP ou CRM</span>
+            </li>
+            <li className="flex items-center gap-2 text-red-600/70 font-medium">
+              <div className="w-1 h-1 bg-red-400 rounded-full" />
+              <span>Integrações profundas ou bidirecionais</span>
+            </li>
+            <li className="flex items-center gap-2 text-red-600/70 font-medium">
+              <div className="w-1 h-1 bg-red-400 rounded-full" />
+              <span>Desenvolvimento de App Mobile nativo (iOS/Android)</span>
             </li>
             <li className="flex items-center gap-2">
               <div className="w-1 h-1 bg-slate-400 rounded-full" />
-              <span>Desenvolvimento de CRM próprio</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <div className="w-1 h-1 bg-slate-400 rounded-full" />
-              <span>Automação completa via Salesforce</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <div className="w-1 h-1 bg-slate-400 rounded-full" />
-              <span>Desenvolvimento de App Mobile nativo</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <div className="w-1 h-1 bg-slate-400 rounded-full" />
-              <span>Desenvolvimento de novas integrações não previstas</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <div className="w-1 h-1 bg-slate-400 rounded-full" />
-              <span>Treinamento de IA com bases documentais extensas</span>
+              <span>Novas integrações não previstas</span>
             </li>
           </ul>
           <div className="mt-4 p-3 bg-white border border-slate-200 rounded-xl text-[10px] text-slate-400">
@@ -928,19 +927,19 @@ const StrategySection: React.FC = () => (
     <div className="max-w-7xl mx-auto w-full">
       <div className="mb-12 md:flex justify-between items-end">
         <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} className="motion-gpu">
-          <SectionTag text="04 // Execução" />
+          <SectionTag text="Fase 04 — Execução" />
           <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight text-tight">
-            Fases Acionáveis (Go-Live até 6m)
+            Roadmap de Implantação
           </h2>
         </motion.div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {[
-          { step: 'Mapeamento', title: 'Kickoff & APIs', desc: 'Alinhamento com a TI Inpasa, levantamento dos endpoints do ERP e design de interface.', icon: <Search />, highlight: false },
-          { step: 'Desenvolvimento', title: 'Portal & IA', desc: 'Programação do ambiente seguro, dashboards e treinamento do modelo de linguagem do assistente.', icon: <Cpu />, highlight: false },
-          { step: 'Homologação', title: 'Testes de Risco', desc: 'Validação de segurança, simulação de chamados e testes de carga com a equipe Inpasa.', icon: <CheckCircle2 />, highlight: true },
-          { step: 'Entrega', title: 'Go-Live Oficial', desc: 'Publicação da plataforma, treinamento operacional e monitoramento inicial de adoção.', icon: <Rocket />, highlight: false }
+          { step: 'Fase 01', title: 'Kickoff & Escopo', desc: 'Alinhamento estratégico com a TI Inpasa e design final da solução.', icon: <Search />, duration: '1 semana', highlight: false },
+          { step: 'Fase 02', title: 'Desenvolvimento & Integração', desc: 'Desenvolvimento do portal do cliente, integração inicial com sistemas da Inpasa e configuração do assistente virtual.', icon: <Cpu />, duration: '5–6 semanas', highlight: false },
+          { step: 'Fase 03', title: 'Segurança & Validação', desc: 'Validação da segurança da aplicação, testes funcionais e homologação junto à equipe da Inpasa.', icon: <CheckCircle2 />, duration: '2 semanas', highlight: true },
+          { step: 'Fase 04', title: 'Go-Live Oficial', desc: 'Publicação da plataforma, treinamento operacional e monitoramento inicial de adoção.', icon: <Rocket />, duration: '1 semana', highlight: false }
         ].map((s, i) => (
           <motion.div
             key={s.step}
@@ -953,9 +952,14 @@ const StrategySection: React.FC = () => (
             <motion.div whileHover={{ rotate: 10 }} className={`mb-6 ${s.highlight ? 'text-emerald-600' : 'text-slate-400'} motion-gpu`}>
               {s.icon}
             </motion.div>
-            <p className={`text-[10px] font-bold mb-3 uppercase tracking-widest ${s.highlight ? 'text-emerald-600' : 'text-slate-500'}`}>{s.step}</p>
+            <div className="flex justify-between items-center mb-3">
+              <p className={`text-[10px] font-bold uppercase tracking-widest ${s.highlight ? 'text-emerald-600' : 'text-slate-500'}`}>{s.step}</p>
+              <span className={`text-[9px] px-2 py-0.5 rounded-full font-black border ${s.highlight ? 'bg-emerald-100 border-emerald-400 text-emerald-700' : 'bg-slate-100 border-slate-300 text-slate-600'}`}>
+                {s.duration}
+              </span>
+            </div>
             <h4 className="text-lg font-bold text-slate-900 mb-3 leading-tight tracking-tight">{s.title}</h4>
-            <p className="text-sm text-slate-600 leading-relaxed font-bold flex-1">{s.desc}</p>
+            <p className="text-sm text-slate-600 leading-relaxed font-medium flex-1">{s.desc}</p>
           </motion.div>
         ))}
       </div>
