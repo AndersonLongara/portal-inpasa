@@ -31,7 +31,7 @@ import {
   Users,
   Smartphone,
   Globe,
-  FileSignature,
+  Brain,
   ShieldAlert,
   GitBranch,
   CheckSquare,
@@ -537,7 +537,25 @@ const ArchitectureSection: React.FC = () => (
             </NodeCard>
           </div>
 
-          <Arrow label="TLS 1.3 Seguro" />
+          <Arrow label="Mensageria" />
+
+          {/* COLUNA 2: CAMADA DE INGESTÃO & FILAS */}
+          <div className="flex flex-col justify-center gap-6 w-full max-w-[280px] lg:w-48 xl:w-56 shrink-0 z-10">
+            <NodeCard borderColor="border-orange-300" bg="bg-orange-50/30" logo={<TechIcon src="https://cdn.simpleicons.org/rabbitmq/FF6600" alt="RabbitMQ" size={32} />}>
+               <div className="w-12 h-12 bg-gradient-to-br from-orange-50 to-orange-100 text-orange-600 rounded-full flex items-center justify-center mb-3 shadow-sm border border-orange-200">
+                <Network size={24} />
+              </div>
+              <h3 className="font-bold text-slate-800 text-sm">Ingestão & Filas</h3>
+              <p className="text-[10px] text-slate-500 mt-1 mb-2 font-medium">Asincronismo & Resiliência</p>
+              <div className="flex gap-2 mb-2">
+                 <TechIcon src="https://cdn.simpleicons.org/apachekafka/231F20" alt="Kafka" size={14} />
+                 <TechIcon src="https://cdn.simpleicons.org/redis/DC382D" alt="Redis Streams" size={14} />
+              </div>
+              <TagBadge icon={CheckCircle2} text="ACK 200 Instantâneo" color="emerald" />
+            </NodeCard>
+          </div>
+
+          <Arrow label="Workers" />
 
           {/* COLUNA 2: ATENDIMENTO NÍVEL 1 & 2 (BORDA/FRONTEND) */}
           <div className="flex flex-col gap-6 w-full max-w-[280px] lg:w-56 xl:w-64 shrink-0 bg-gradient-to-b from-slate-50 to-transparent p-5 rounded-2xl border border-slate-200 relative z-10 shadow-sm">
@@ -594,17 +612,38 @@ const ArchitectureSection: React.FC = () => (
               <div className="w-14 h-14 bg-gradient-to-br from-slate-100 to-slate-200 text-slate-700 rounded-full flex items-center justify-center mb-4 border border-slate-300 shadow-sm">
                 <Cpu size={28} />
               </div>
-              <h3 className="font-bold text-slate-900 text-sm">Microserviços Node</h3>
+              <h3 className="font-bold text-slate-900 text-sm">Microsserviços Node</h3>
               <div className="flex gap-2 mb-3">
                  <TechIcon src="https://cdn.simpleicons.org/nestjs/E0234E" alt="NestJS" size={12} />
                  <TechIcon src="https://cdn.simpleicons.org/auth0/EB5424" alt="Auth0" size={12} />
                  <TechIcon src="https://cdn.simpleicons.org/prisma/2D3748" alt="Prisma" size={12} />
               </div>
-              <p className="text-xs text-slate-500 mt-2 mb-4 leading-relaxed">
-                Roteia dados entre Whatsapp, Portal, ERP e Salesforce sem expor os sistemas core.
+              <p className="text-xs text-slate-500 mt-1 mb-4 leading-relaxed">
+                Consome filas e orquestra fluxos entre AI, ERP e Salesforce.
               </p>
               <TagBadge icon={ShieldCheck} text="Rate Limit & JWT" color="emerald" />
-              <TagBadge icon={FileSignature} text="Logs de Auditoria" color="emerald" />
+            </NodeCard>
+
+            <div className="flex justify-center my-[-12px] relative z-10 text-slate-400">
+              <div className="w-0.5 h-6 bg-slate-300 border-x border-white"></div>
+            </div>
+
+            {/* Motor de IA Cognitiva */}
+            <NodeCard borderColor="border-blue-400" bg="bg-blue-50/30" logo={<TechIcon src="https://cdn.simpleicons.org/langchain/1C3C3C" alt="LangChain" size={32} />}>
+               <div className="flex items-center gap-3 mb-2 w-full">
+                <Brain className="text-blue-600 shrink-0" size={20} />
+                <h3 className="font-bold text-slate-900 text-sm italic">Motor de IA Cognitiva</h3>
+              </div>
+              <div className="flex gap-2 mb-2 w-full overflow-x-hidden">
+                 <TechIcon src="https://cdn.simpleicons.org/openai/412991" alt="OpenAI" size={12} />
+                 <TechIcon src="https://cdn.simpleicons.org/anthropic/D1D5DB" alt="Anthropic" size={12} />
+                 <TechIcon src="https://cdn.simpleicons.org/neo4j/008CC1" alt="Neo4j" size={12} />
+                 <TechIcon src="https://cdn.simpleicons.org/supabase/3ECF8E" alt="pgvector" size={12} />
+              </div>
+              <p className="text-[10px] text-slate-600 text-left leading-tight mb-2">
+                Workflows Multi-Agentes com <strong>GraphRAG</strong> (Memória Corporativa).
+              </p>
+              <TagBadge icon={Activity} text="Cognição em Tempo Real" color="blue" />
             </NodeCard>
           </div>
 
