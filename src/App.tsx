@@ -678,8 +678,12 @@ const CorporateLoader: React.FC = () => (
 );
 
 const Footer: React.FC = () => (
-  <footer className="w-full bg-white border-t border-slate-200 pt-16 pb-12 px-8 snap-start mt-auto">
-    <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+  <footer className="w-full bg-slate-900 rounded-t-[3rem] md:rounded-t-[4rem] pt-16 pb-12 px-8 snap-start mt-auto relative overflow-hidden">
+    {/* Efeitos Visuais de Fundo */}
+    <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-600/10 blur-[100px] rounded-full pointer-events-none" />
+    <div className="absolute bottom-0 left-0 w-64 h-64 bg-slate-800/50 blur-[80px] rounded-full pointer-events-none" />
+
+    <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 relative z-10">
       
       {/* Coluna 1: Branding */}
       <div className="flex flex-col items-start gap-6 max-w-sm">
@@ -687,7 +691,7 @@ const Footer: React.FC = () => (
           href="https://altrahub.com.br" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="transition-transform hover:scale-105 active:scale-95 duration-300"
+          className="transition-transform hover:scale-105 active:scale-95 duration-300 p-2 bg-white/5 rounded-xl backdrop-blur-sm border border-white/10"
         >
           <img 
             src="/altrahub-logo.svg" 
@@ -695,7 +699,7 @@ const Footer: React.FC = () => (
             className="h-8 w-auto"
           />
         </a>
-        <p className="text-slate-500 text-sm font-medium leading-relaxed">
+        <p className="text-slate-400 text-sm font-medium leading-relaxed">
           Especialistas em transformar processos complexos em fluxos digitais de alta performance. O DNA AltraHub foca em escala, segurança e excelência estética.
         </p>
       </div>
@@ -703,25 +707,25 @@ const Footer: React.FC = () => (
       {/* Coluna 2: Links e Contato */}
       <div className="flex flex-col md:items-end gap-6 h-full justify-between">
         <div className="flex flex-col md:items-end gap-4">
-          <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Nossos Canais</span>
+          <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">Nossos Canais</span>
           <a 
             href="https://altrahub.com.br" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="group flex items-center gap-2 text-slate-900 text-xs font-bold uppercase tracking-widest hover:text-emerald-600 transition-colors"
+            className="group flex items-center gap-2 text-white text-xs font-bold uppercase tracking-widest hover:text-emerald-400 transition-colors"
           >
             Conheça o Site Oficial
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
 
-        <div className="flex flex-col md:items-end gap-1 pt-6 border-t border-slate-100 w-full">
-          <p className="text-slate-400 text-[10px] font-bold uppercase tracking-wider">© 2026 AltraHub Software House</p>
+        <div className="flex flex-col md:items-end gap-1 pt-6 border-t border-slate-800 w-full">
+          <p className="text-slate-500 text-[10px] font-bold uppercase tracking-wider">© 2026 AltraHub Software House</p>
           <a 
             href="https://altrahub.com.br" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-emerald-600 text-[11px] font-black hover:underline decoration-2 underline-offset-4"
+            className="text-white text-[11px] font-black hover:text-emerald-400 transition-colors"
           >
             www.altrahub.com.br
           </a>
