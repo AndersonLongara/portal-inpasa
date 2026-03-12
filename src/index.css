@@ -20,6 +20,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  font-smoothing: antialiased;
 }
 .motion-gpu {
   transform: translateZ(0);

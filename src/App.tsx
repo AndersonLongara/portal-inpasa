@@ -58,7 +58,7 @@ const App: React.FC = () => {
   if (!systemReady) return <CorporateLoader />;
 
   return (
-    <div className="bg-slate-50 text-slate-900 overflow-hidden font-sans antialiased subpixel-antialiased selection:bg-emerald-600/20 relative h-screen">
+    <div className="bg-slate-50 text-slate-900 overflow-hidden font-sans antialiased selection:bg-emerald-600/20 relative h-screen">
       
       <TopNavigation 
         activeSection={activeSection} 
@@ -678,7 +678,7 @@ const CorporateLoader: React.FC = () => (
 );
 
 const Footer: React.FC = () => (
-  <footer className="w-full bg-slate-900 rounded-t-[3rem] md:rounded-t-[4rem] pt-16 pb-12 px-8 snap-start mt-auto relative overflow-hidden">
+  <footer className="w-full bg-slate-900 rounded-t-[2rem] pt-16 pb-12 px-8 snap-start mt-auto relative overflow-hidden">
     {/* Efeitos Visuais de Fundo */}
     <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-600/10 blur-[100px] rounded-full pointer-events-none" />
     <div className="absolute bottom-0 left-0 w-64 h-64 bg-slate-800/50 blur-[80px] rounded-full pointer-events-none" />
@@ -691,7 +691,7 @@ const Footer: React.FC = () => (
           href="https://altrahub.com.br" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="transition-transform hover:scale-105 active:scale-95 duration-300 p-2 bg-white/5 rounded-xl backdrop-blur-sm border border-white/10"
+          className="transition-transform hover:scale-105 active:scale-95 duration-300"
         >
           <img 
             src="/altrahub-logo.svg" 
