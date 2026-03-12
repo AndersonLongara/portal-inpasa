@@ -11,9 +11,9 @@ import {
   CheckCircle2,
   MessageSquare,
   AlertTriangle,
-  Users,
   Rocket,
   ArrowRight,
+  ArrowLeft,
   FileText,
   Database,
   Search,
@@ -23,8 +23,10 @@ import {
   LayoutDashboard,
   CreditCard,
   DownloadCloud,
-  Network,
-  ShieldCheck
+  ShieldCheck,
+  GlobeLock,
+  Server,
+  Box
 } from 'lucide-react';
 
 import type { Transition } from 'framer-motion';
@@ -207,12 +209,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onExplore }) => (
       >
         <SectionTag text="Transformação Digital // Março 2026" />
         
-        <div className="mb-4">
-          <span className="inline-block bg-slate-900 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-2">Preparado para Inpasa</span>
-          <p className="text-sm font-black text-slate-500 uppercase tracking-widest">A/C Klayton Lauer & Gustavo Mariano</p>
-        </div>
-        
-        <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-6 text-tight">
+        <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-6 text-tight mt-4">
           PORTAL INTELIGENTE DE <br />
           <span className="text-emerald-600">ATENDIMENTO AO CLIENTE</span>
         </h1>
@@ -412,52 +409,83 @@ const SolutionSection: React.FC = () => (
 );
 
 const ArchitectureSection: React.FC = () => (
-  <section className="h-screen w-full snap-start flex flex-col justify-center bg-slate-50 px-12 md:px-24 pt-16">
-    <div className="max-w-7xl mx-auto w-full">
-      <div className="text-center mb-16">
-        <SectionTag text="03 // Engenharia da Solução" />
-        <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-4 text-tight">
-          Arquitetura Integrada
+  <section className="h-screen w-full snap-start flex flex-col justify-center bg-slate-900 px-12 md:px-24 pt-16 relative overflow-hidden">
+    <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-600/10 blur-[100px] rounded-full pointer-events-none" />
+    <div className="max-w-7xl mx-auto w-full relative z-10">
+      <div className="text-center mb-12">
+        <motion.div initial={{ opacity: 0, y: -10 }} whileInView={{ opacity: 1, y: 0 }} className="inline-block bg-slate-800 text-emerald-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4 border border-slate-700">03 // Engenharia & Segurança</motion.div>
+        <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4 text-tight">
+          Arquitetura de Grau Institucional
         </h2>
-        <p className="text-slate-500 font-bold text-sm">Design escalável conectado diretamente ao coração do seu negócio.</p>
+        <p className="text-slate-400 font-medium text-sm max-w-2xl mx-auto">
+          Design escalável operando sob 3 linhas de atendimento, com isolamento de dados (Tenant IA) e infraestrutura imune a acessos não autorizados.
+        </p>
       </div>
 
-      <div className="relative">
-        <div className="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-emerald-100 via-emerald-600 to-slate-200 -translate-y-1/2 z-0" />
-
-        <div className="grid md:grid-cols-4 gap-6 relative z-10">
-          {[
-            { step: '1. O Cliente', icon: <Users />, desc: 'Acessa de qualquer dispositivo de forma segura.' },
-            { step: '2. Portal + IA', icon: <LayoutDashboard />, desc: 'Interface única, enriquecida pelo Assistente Virtual.' },
-            { step: '3. Camada de API', icon: <Network />, desc: 'Orquestração de dados segura e criptografada.' },
-            { step: '4. ERP Inpasa', icon: <Database />, desc: 'Sistemas internos fornecendo a verdade em tempo real.' }
-          ].map((node, i) => (
-            <motion.div 
-              key={node.step}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              whileHover={{ y: -10, boxShadow: '0 25px 50px -12px rgb(0 0 0 / 0.15)' }}
-              className="bg-white border border-slate-200 rounded-3xl p-8 shadow-md transition-all cursor-default motion-gpu flex flex-col items-center text-center"
-            >
-              <div className="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-6 shadow-inner border border-emerald-100">
-                {React.cloneElement(node.icon as React.ReactElement<any>, { size: 32 })}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+        {/* Diagrama Esquerdo */}
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          className="md:col-span-8 bg-slate-800/40 border border-slate-700/60 p-8 rounded-[2rem] flex flex-col justify-center shadow-2xl"
+        >
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center gap-4 bg-slate-900/80 border border-slate-700 p-4 rounded-2xl relative shadow-lg">
+              <GlobeLock className="text-emerald-500" size={24} />
+              <div>
+                <h4 className="font-bold text-white">WAF & Edge Protection</h4>
+                <p className="text-xs text-slate-400 mt-1">Filtro de tráfego na borda. Bloqueio automático de anomalias e negações DDoS.</p>
               </div>
-              
-              <h4 className="text-lg font-black text-slate-900 tracking-tight mb-3">{node.step}</h4>
-              <p className="text-xs text-slate-600 font-medium leading-relaxed">
-                {node.desc}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
+            </div>
+            
+            <div className="flex justify-center -my-2 opacity-50"><ArrowLeft className="rotate-[-90deg] text-emerald-500" size={20}/></div>
+            
+            <div className="flex items-center gap-4 bg-slate-900/80 border border-slate-700 p-4 rounded-2xl relative shadow-lg">
+              <Server className="text-emerald-500" size={24} />
+              <div>
+                <h4 className="font-bold text-white">VPC Isolada (Rede Privada)</h4>
+                <p className="text-xs text-slate-400 mt-1">Backend blindado com acesso estrito ao Salesforce e instâncias do ERP Inpasa.</p>
+              </div>
+            </div>
 
-      <div className="mt-16 bg-emerald-600/5 border border-emerald-600/10 rounded-2xl p-6 text-center max-w-3xl mx-auto">
-         <p className="text-xs font-bold text-emerald-800 uppercase tracking-widest mb-2">Preparado para o Futuro</p>
-         <p className="text-sm text-slate-700 font-medium">
-           Esta arquitetura fundacional garante que integrações futuras (como Salesforce, WhatsApp omnichannel ou Analytics avançado) ocorram sem a necessidade de reconstruir o sistema.
-         </p>
+            <div className="flex justify-center -my-2 opacity-50"><ArrowLeft className="rotate-[-90deg] text-emerald-500" size={20}/></div>
+
+            <div className="flex items-center gap-4 bg-emerald-900/20 border border-emerald-500/30 p-5 rounded-2xl relative shadow-[0_0_30px_rgba(16,185,129,0.1)]">
+              <Box className="text-emerald-400" size={28} />
+              <div>
+                <h4 className="font-bold text-emerald-100 flex items-center gap-2">
+                  IA Cognitiva
+                  <span className="text-[9px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded uppercase tracking-widest border border-emerald-500/20">Zero Retention</span>
+                </h4>
+                <p className="text-xs text-emerald-200/70 mt-1">Modelos isolados de treinamento externo. Criptografia AES-256 e LGPD nativa na base neural.</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Boxes Direita */}
+        <div className="md:col-span-4 flex flex-col gap-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="flex-1 bg-slate-800/40 border border-slate-700/60 p-8 rounded-[2rem] flex flex-col justify-center"
+          >
+            <Database className="text-emerald-400 mb-4" size={28} />
+            <h4 className="text-xl font-bold text-white mb-2">3 Linhas de Defesa</h4>
+            <p className="text-xs text-slate-400 leading-relaxed font-medium">Integração viva: WhatsApp (1ª linha), Portal Web (2ª) e Transbordo Humano Inpasa (3ª).</p>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="flex-1 bg-slate-800/40 border border-slate-700/60 p-8 rounded-[2rem] flex flex-col justify-center"
+          >
+            <ShieldCheck className="text-emerald-400 mb-4" size={28} />
+            <h4 className="text-xl font-bold text-white mb-2">Transações Seguras</h4>
+            <p className="text-xs text-slate-400 leading-relaxed font-medium">Comunicação e payload de chamados trafegam via TLS 1.3 mandatório, assegurando privacidade extrema.</p>
+          </motion.div>
+        </div>
       </div>
     </div>
   </section>
@@ -473,9 +501,6 @@ const StrategySection: React.FC = () => (
             Fases Acionáveis (Go-Live até 12m)
           </h2>
         </motion.div>
-        <p className="text-slate-600 max-w-md text-sm leading-relaxed mt-6 md:mt-0 text-right font-bold">
-          Kickoff oficial agendado para <strong className="text-emerald-600">23/02/2026</strong>. Equipe Squad dedicada (6 FTEs) validada para sucesso contínuo do projeto.
-        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -501,20 +526,6 @@ const StrategySection: React.FC = () => (
             <p className="text-sm text-slate-600 leading-relaxed font-bold flex-1">{s.desc}</p>
           </motion.div>
         ))}
-      </div>
-
-      <div className="mt-8 bg-slate-50 border border-slate-200 rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
-        <div>
-          <h4 className="font-black text-slate-900 mb-1 tracking-tight">Squad de Alta Performance (6 FTEs)</h4>
-          <p className="text-xs text-slate-600 font-medium">O projeto conta com alocação dedicada de multidisciplinares para garantir o planejamento, integração de arquitetura e mitigação de riscos.</p>
-        </div>
-        <div className="flex flex-wrap gap-2 md:max-w-md md:justify-end">
-          <span className="bg-white border border-slate-200 px-3 py-1 text-[10px] uppercase tracking-widest font-bold text-slate-700 rounded-lg shadow-sm">1x Arquiteto/GP</span>
-          <span className="bg-white border border-slate-200 px-3 py-1 text-[10px] uppercase tracking-widest font-bold text-slate-700 rounded-lg shadow-sm">2x Devs Salesforce</span>
-          <span className="bg-white border border-slate-200 px-3 py-1 text-[10px] uppercase tracking-widest font-bold text-slate-700 rounded-lg shadow-sm">1x Dev IA/Chatbot</span>
-          <span className="bg-white border border-slate-200 px-3 py-1 text-[10px] uppercase tracking-widest font-bold text-slate-700 rounded-lg shadow-sm">1x QA/Testes</span>
-          <span className="bg-white border border-slate-200 px-3 py-1 text-[10px] uppercase tracking-widest font-bold text-slate-700 rounded-lg shadow-sm">1x Business Analyst</span>
-        </div>
       </div>
     </div>
   </section>
