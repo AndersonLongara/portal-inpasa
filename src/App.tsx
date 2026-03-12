@@ -144,9 +144,9 @@ const TopNavigation: React.FC<TopNavigationProps> = ({ activeSection, onNavClick
     <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-xl border-b border-slate-200 z-50 h-16 flex items-center justify-between px-8 shadow-sm transition-all">
       <div className="flex items-center gap-4 group cursor-pointer" onClick={() => onNavClick(0)}>
         <motion.img 
-          src="https://www.inpasa.com.br/wp-content/themes/inpasa/assets/images/logo.svg"
+          src="https://www.inpasa.com.br/wp-content/uploads/2023/05/logo-inpasa.png"
           alt="Inpasa"
-          className="h-6 w-auto object-contain object-left transition-all motion-gpu"
+          className="h-8 w-auto object-contain object-left transition-all motion-gpu"
           onError={(e) => {
              const target = e.target as HTMLImageElement;
              target.style.display = 'none';
@@ -449,7 +449,7 @@ const TagBadge = ({ icon: Icon, text, color = "emerald" }: { icon: any, text: st
   return (
     <div className={`flex items-center gap-2 border text-[10px] xl:text-xs font-semibold px-2.5 py-1.5 rounded-md mt-2 w-full shadow-sm ${colorClasses[color]}`}>
       <Icon size={14} className={`shrink-0 ${colorClasses[color].split(' ')[0]}`} />
-      <span className="truncate leading-tight text-slate-700">{text}</span>
+      <span className="leading-tight text-slate-700 whitespace-nowrap">{text}</span>
     </div>
   );
 };
@@ -637,7 +637,7 @@ const ArchitectureSection: React.FC = () => (
                 <h3 className="font-bold text-slate-900 text-sm italic">Motor de IA Cognitiva</h3>
               </div>
               <div className="flex gap-2 mb-2 w-full overflow-x-hidden">
-                 <TechIcon src="https://cdn.simpleicons.org/openai/412991" alt="OpenAI" size={12} />
+                 <TechIcon src="https://cdn.simpleicons.org/openai/000000" alt="OpenAI" size={12} />
                  <TechIcon src="https://cdn.simpleicons.org/anthropic/D1D5DB" alt="Anthropic" size={12} />
                  <TechIcon src="https://cdn.simpleicons.org/neo4j/008CC1" alt="Neo4j" size={12} />
                  <TechIcon src="https://cdn.simpleicons.org/supabase/3ECF8E" alt="pgvector" size={12} />
