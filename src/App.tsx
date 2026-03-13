@@ -618,7 +618,7 @@ const ArchitectureSection: React.FC = () => (
         <Arrow label="API Gateway" />
 
         {/* COLUNA 3: ORQUESTRAÇÃO & SEGURANÇA (CORE API) */}
-        <div className="flex flex-col justify-center w-full max-w-[280px] lg:w-48 xl:w-56 shrink-0 bg-gradient-to-b from-slate-100/80 to-transparent p-5 rounded-2xl border border-slate-200 relative z-10 shadow-sm">
+        <div className="flex flex-col justify-center gap-6 w-full max-w-[280px] lg:w-48 xl:w-56 shrink-0 bg-gradient-to-b from-slate-100/80 to-transparent p-5 rounded-2xl border border-slate-200 relative z-10 shadow-sm">
           <span className="absolute -top-3 left-1/2 -translate-x-1/2 lg:translate-x-0 lg:left-6 bg-slate-200 text-slate-800 text-[10px] font-bold px-3 py-1 rounded-full border border-slate-300 uppercase tracking-wider whitespace-nowrap shadow-sm">
             Orquestração Segura
           </span>
@@ -638,7 +638,7 @@ const ArchitectureSection: React.FC = () => (
             <TagBadge icon={ShieldCheck} text="Rate Limit & JWT" color="emerald" />
           </NodeCard>
 
-          <div className="flex justify-center my-[-12px] relative z-10 text-slate-400">
+          <div className="flex justify-center my-2 relative z-10 text-slate-400">
             <div className="w-0.5 h-6 bg-slate-300 border-x border-white"></div>
           </div>
 
